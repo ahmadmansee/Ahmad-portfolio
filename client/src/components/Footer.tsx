@@ -33,7 +33,7 @@ export const Footer = ({ linkedinSrc = "/figmaAssets/linkedin.png" }: { linkedin
             variant="ghost"
             asChild
           >
-            <a href="#" download>
+            <a href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
               <span className="inline-flex items-center justify-center px-2 py-0">
                 <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#222222] text-base leading-[1.6]">
                   Download My CV

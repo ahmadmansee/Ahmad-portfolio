@@ -131,7 +131,7 @@ export const About = () => {
                 variant="outline"
                 asChild
               >
-                <a href="#" download>
+                <a href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                   <span className="inline-flex items-center justify-center px-2">
                     <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-base leading-[1.6]">
                       Download My CV

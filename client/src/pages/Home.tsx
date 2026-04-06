@@ -164,8 +164,9 @@ export const Home = () => {
             </p>
           </div>
           <a
-            href="#"
-            download
+            href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-0 border border-white text-white font-['Be_Vietnam_Pro',Helvetica] font-medium text-base leading-[1.6] px-3.5 py-3 rounded-3xl hover:bg-white/10 transition-colors"
           >
             <span className="px-2">Download My CV</span>
