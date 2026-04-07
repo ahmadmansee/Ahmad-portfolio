@@ -20,17 +20,6 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-const BrowserFrame = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="w-full rounded-[36px] overflow-hidden">
-    <div className="bg-[#37383f] h-[56px] flex items-center px-6 gap-3 rounded-t-[36px]">
-      <div className="w-5 h-5 rounded-full bg-[#ff5f57]" />
-      <div className="w-5 h-5 rounded-full bg-[#febc2e]" />
-      <div className="w-5 h-5 rounded-full bg-[#28c840]" />
-    </div>
-    <img src={src} alt={alt} className="w-full h-auto block rounded-b-[36px]" />
-  </div>
-);
-
 const Quote = ({ label, text, children }: { label: string; text?: string; children?: React.ReactNode }) => (
   <div className="bg-[#16171b] flex gap-6 items-start px-8 py-5 rounded-2xl w-full">
     <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-lg shrink-0 whitespace-nowrap">{label}</span>
@@ -39,7 +28,9 @@ const Quote = ({ label, text, children }: { label: string; text?: string; childr
   </div>
 );
 
-const ProblemSolution = ({ problem, solution, solutionList }: { problem: string; solution: string; solutionList?: string[] }) => (
+const ProblemSolution = ({
+  problem, solution, solutionList,
+}: { problem: string; solution: string; solutionList?: string[] }) => (
   <div className="flex flex-col gap-4 max-w-[700px]">
     <div className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed">
       <span className="font-bold uppercase block mb-1">Problem:</span>
@@ -57,12 +48,19 @@ const ProblemSolution = ({ problem, solution, solutionList }: { problem: string;
   </div>
 );
 
+/** A full-width image that renders the Figma frame export as-is (already includes browser chrome). */
+const FullImage = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="w-full rounded-3xl overflow-hidden">
+    <img src={src} alt={alt} className="w-full h-auto block" />
+  </div>
+);
+
 export const CaseStudyEdugla = () => {
   return (
     <div className="bg-black min-h-screen w-full">
       <Navbar />
 
-      {/* Hero */}
+      {/* ───── Hero ───── */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-20 pt-12 pb-0">
         <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
           <Link href="/">
@@ -104,23 +102,14 @@ export const CaseStudyEdugla = () => {
             ))}
           </div>
 
-          {/* Cover */}
-          <div className="w-full rounded-[36px] overflow-hidden mt-2">
-            <div className="bg-[#37383f] h-[56px] flex items-center px-6 gap-3 rounded-t-[36px]">
-              <div className="w-5 h-5 rounded-full bg-[#ff5f57]" />
-              <div className="w-5 h-5 rounded-full bg-[#febc2e]" />
-              <div className="w-5 h-5 rounded-full bg-[#28c840]" />
-            </div>
-            <img
-              src="/case-study/edugla/brain.png"
-              alt="Edugla Brain UI"
-              className="w-full h-auto block rounded-b-[36px] max-h-[600px] object-cover object-top"
-            />
+          {/* Hero cover — the brain UI inside the browser chrome */}
+          <div className="w-full mt-2">
+            <FullImage src="/case-study/edugla/hero-cover.png" alt="Edugla Brain interface" />
           </div>
         </motion.div>
       </div>
 
-      {/* Content Sections */}
+      {/* ───── Content ───── */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-20">
         <div className="max-w-[1045px] mx-auto py-16 md:py-24 flex flex-col gap-16 md:gap-20">
 
@@ -148,44 +137,43 @@ export const CaseStudyEdugla = () => {
               label="Main strengths:"
               text={`"Edugla's main strength is the ability to collect knowledge from worldwide contributors and present it in a "brain" graph to visualize subjects, learning materials and relationships.`}
             />
-            {/* MacBook Mockup */}
-            <div className="bg-[#eff2f5] rounded-3xl overflow-hidden w-full">
-              <img src="/case-study/edugla/macbook.png" alt="Edugla MacBook interface" className="w-full h-auto object-cover object-top max-h-[500px]" />
-            </div>
+            {/* MacBook cover — properly framed export from Figma */}
+            <FullImage src="/case-study/edugla/macbook-cover.png" alt="Edugla MacBook interface" />
           </motion.div>
 
           {/* The Brain */}
           <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>The Brain — Knowledge Graph</SectionTitle>
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                { img: "/case-study/edugla/mockup-1.png", label: "Knowledge Graph View" },
-                { img: "/case-study/edugla/mockup-2.png", label: "Topic Exploration" },
-                { img: "/case-study/edugla/mockup-3.png", label: "Connections View" },
-                { img: "/case-study/edugla/mockup-4.png", label: "Learning Map" },
-              ].map((item) => (
-                <div key={item.label} className="flex flex-col gap-2">
-                  <img src={item.img} alt={item.label} className="w-full h-auto rounded-2xl object-cover" />
-                  <p className="font-['Inter_Tight',Helvetica] text-[#95989c] text-sm">{item.label}</p>
-                </div>
-              ))}
-            </div>
+            <ProblemSolution
+              problem="Most learning platforms organize knowledge as lists of courses, videos, etc — making the learning experience non-linear. Learners struggle to understand how topics are connected, move between related topics easily, and build knowledge as an expanding structure."
+              solution="We introduced The Brain, a node-based knowledge map. Each node represents a topic that allows users to explore a connected network of topics."
+            />
+            {/* Brain UI — full browser frame export */}
+            <FullImage src="/case-study/edugla/brain-image.png" alt="The Brain knowledge graph" />
+            <Quote label="Key highlights:">
+              <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
+                <li>Node-based interactive knowledge map</li>
+                <li>Color-coded topic clusters for visual clarity</li>
+                <li>Click any node to expand subtopics and related content</li>
+                <li>AI-generated connections between related subjects</li>
+              </ul>
+            </Quote>
           </motion.div>
 
-          {/* AI Roadmap Generator */}
+          {/* AI Roadmap Generator (Lula) */}
           <motion.div custom={3} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>AI Roadmap Generator (Lula)</SectionTitle>
             <ProblemSolution
-              problem="From research we see a trend in which users today are increasingly interacting with AI through conversation, asking questions, generating ideas, and making decisions based on responses. The Brain knowledge graph interface alone can feel limiting."
+              problem="Users are increasingly interacting with AI through conversation, asking questions, generating ideas, and making decisions based on responses. The Brain knowledge graph interface alone can feel limiting."
               solution="We integrated Lula, a conversational AI assistant within the Brain view. Instead of manually structuring topics, users can generate a personalized roadmap or select suggested prompts directly through chat."
             />
-            <BrowserFrame src="/case-study/edugla/feature-1.png" alt="AI Roadmap Generator" />
+            <FullImage src="/case-study/edugla/roadmap-image.png" alt="AI Roadmap Generator Lula" />
             <Quote label="How it works:">
               <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
                 <li>A chat panel appears on the left side of the screen</li>
-                <li>Users can type a request or choose from suggested prompts to generate a roadmap.</li>
-                <li>Once created, the roadmap details appear inside the chat panel.</li>
-                <li>Relevant topics are automatically highlighted on the map for visual context.</li>
+                <li>Users can type a request or choose from suggested prompts to generate a roadmap</li>
+                <li>Once created, the roadmap details appear inside the chat panel</li>
+                <li>Relevant topics are automatically highlighted on the map for visual context</li>
               </ul>
             </Quote>
           </motion.div>
@@ -194,18 +182,23 @@ export const CaseStudyEdugla = () => {
           <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Learning Mode</SectionTitle>
             <ProblemSolution
-              problem="Traditional learning platforms often rely on a single content format e.g video. Learners consume material passively and must search across multiple sources/channels to build a complete understanding, making the experience fragmented and static."
+              problem="Traditional learning platforms often rely on a single content format (e.g. video). Learners consume material passively and must search across multiple sources to build a complete understanding, making the experience fragmented and static."
               solution="Learning Mode combines curated content from multiple formats (video, e-book, and articles) into structured modules around a selected topic."
-              solutionList={["Consume content from trustworthy resources", "Summarize key insights", "Take exercises", "Continue the conversation with Lula for clarification or deeper exploration"]}
+              solutionList={[
+                "Consume content from trustworthy resources",
+                "Summarize key insights",
+                "Take exercises",
+                "Continue the conversation with Lula for clarification or deeper exploration",
+              ]}
             />
-            <BrowserFrame src="/case-study/edugla/feature-2.png" alt="Learning Mode" />
+            <FullImage src="/case-study/edugla/learning-image.png" alt="Learning Mode" />
             <Quote label="Key details:">
               <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
-                <li>Roadmap sidebar shows modules and progress.</li>
-                <li>The active module is highlighted for focus.</li>
-                <li>User needs to take an exercise after each module.</li>
-                <li>Additional content can be added or adjusted to make learning process more engaging.</li>
-                <li>Lula chat remains accessible throughout the learning process.</li>
+                <li>Roadmap sidebar shows modules and progress</li>
+                <li>The active module is highlighted for focus</li>
+                <li>User needs to take an exercise after each module</li>
+                <li>Additional content can be added or adjusted to make learning more engaging</li>
+                <li>Lula chat remains accessible throughout the learning process</li>
               </ul>
             </Quote>
           </motion.div>
@@ -214,24 +207,21 @@ export const CaseStudyEdugla = () => {
           <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Favourite & Save</SectionTitle>
             <ProblemSolution
-              problem="During learning, users often come across important insights and related topics, which makes progress and track difficult over time."
+              problem="During learning, users often come across important insights and related topics, which makes progress and tracking difficult over time."
               solution="Favourite feature allows users to capture important modules, content, or roadmaps and return to them later."
             />
-            <BrowserFrame src="/case-study/edugla/feature-3.png" alt="Favourite & Save" />
+            <FullImage src="/case-study/edugla/favourite-image.png" alt="Favourite & Save" />
           </motion.div>
 
-          {/* Mockup Gallery */}
+          {/* More Screens — Mockup grid */}
           <motion.div custom={6} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>More Screens</SectionTitle>
-            <div className="grid md:grid-cols-2 gap-6">
-              {[5, 6, 7, 8, 9].map((n) => (
-                <img
-                  key={n}
-                  src={`/case-study/edugla/mockup-${n}.png`}
-                  alt={`Edugla screen ${n}`}
-                  className="w-full h-auto rounded-2xl object-contain bg-[#111]"
-                />
-              ))}
+            <div className="w-full rounded-3xl overflow-hidden">
+              <img
+                src="/case-study/edugla/mockups-grid.png"
+                alt="Edugla additional screens"
+                className="w-full h-auto block"
+              />
             </div>
           </motion.div>
 
@@ -244,7 +234,7 @@ export const CaseStudyEdugla = () => {
                 className="w-full h-full"
                 allow="autoplay"
                 allowFullScreen
-                title="Edugla AI video"
+                title="Edugla AI learning platform video"
               />
             </div>
           </motion.div>
