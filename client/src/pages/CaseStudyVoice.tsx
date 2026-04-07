@@ -4,6 +4,8 @@ import { ArrowLeft } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
+const VOICE_VIDEO = "https://drive.google.com/file/d/1fQfETPDUWSsQr2EobZ1PUNqDnp0KRAUC/preview";
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
@@ -18,31 +20,24 @@ const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   </h2>
 );
 
-const Quote = ({ label, text, children }: { label: string; text?: string; children?: React.ReactNode }) => (
+const Quote = ({ label, text }: { label: string; text: string }) => (
   <div className="bg-[#16171b] flex gap-6 items-start px-8 py-5 rounded-2xl w-full">
     <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-lg shrink-0 whitespace-nowrap">{label}</span>
-    {text && <p className="font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">{text}</p>}
-    {children}
+    <p className="font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">{text}</p>
   </div>
 );
 
-const PhoneRow = ({ images, captions }: { images: string[]; captions?: string[] }) => (
-  <div className="bg-[#eff2f5] rounded-3xl overflow-hidden w-full p-6 md:p-10">
-    <div className="flex items-end justify-center gap-4 md:gap-6 flex-wrap md:flex-nowrap">
-      {images.map((img, i) => (
-        <div key={i} className="flex flex-col items-center gap-3">
-          <img
-            src={img}
-            alt={captions?.[i] || `Screen ${i + 1}`}
-            className="h-[260px] md:h-[360px] w-auto object-contain rounded-3xl shadow-xl"
-          />
-          {captions?.[i] && (
-            <span className="font-['Inter_Tight',Helvetica] text-xs text-[#555] text-center">{captions[i]}</span>
-          )}
-        </div>
-      ))}
-    </div>
+/** Renders a Figma section export at full width with no cropping */
+const FullImage = ({ src, alt }: { src: string; alt: string }) => (
+  <div className="w-full rounded-3xl overflow-hidden">
+    <img src={src} alt={alt} className="w-full h-auto block" />
   </div>
+);
+
+const FlowLabel = ({ text }: { text: string }) => (
+  <p className="font-['Inter_Tight',Helvetica] font-medium text-[#cf3570] text-sm tracking-widest uppercase">
+    {text}
+  </p>
 );
 
 export const CaseStudyVoice = () => {
@@ -50,7 +45,7 @@ export const CaseStudyVoice = () => {
     <div className="bg-black min-h-screen w-full">
       <Navbar />
 
-      {/* Hero */}
+      {/* ───── Hero ───── */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-20 pt-12 pb-0">
         <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }}>
           <Link href="/">
@@ -68,8 +63,8 @@ export const CaseStudyVoice = () => {
           className="flex flex-col gap-7"
         >
           {/* Brand */}
-          <div className="flex items-center gap-4">
-            <img src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-6 object-contain" />
+          <div className="flex items-center gap-3">
+            <img src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-7 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">
               (Jahez Food delivery app)
             </span>
@@ -94,18 +89,14 @@ export const CaseStudyVoice = () => {
             ))}
           </div>
 
-          {/* Cover */}
-          <div className="bg-[#eff2f5] rounded-3xl overflow-hidden w-full h-[340px] md:h-[500px] relative mt-2">
-            <div className="absolute inset-0 flex items-end justify-center gap-4 pb-0">
-              <img src="/case-study/voice/cover-3.png" alt="Voice screen left" className="h-[78%] object-contain rounded-2xl shadow-2xl" />
-              <img src="/case-study/voice/cover-1.png" alt="Voice screen center" className="h-[92%] object-contain shadow-2xl" />
-              <img src="/case-study/voice/cover-2.png" alt="Voice screen right" className="h-[78%] object-contain rounded-2xl shadow-2xl" />
-            </div>
+          {/* Hero cover — exact Figma export (3 phones) */}
+          <div className="mt-2">
+            <FullImage src="/case-study/voice/hero-cover.png" alt="Voice to Cart hero screens" />
           </div>
         </motion.div>
       </div>
 
-      {/* Content */}
+      {/* ───── Content ───── */}
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-20">
         <div className="max-w-[1045px] mx-auto py-16 md:py-24 flex flex-col gap-16 md:gap-20">
 
@@ -117,94 +108,93 @@ export const CaseStudyVoice = () => {
             </p>
           </motion.div>
 
-          {/* Traditional System */}
+          {/* Traditional ordering system */}
           <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Traditional food ordering system</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
               Food ordering apps rely heavily on search, browsing, and filters. While effective, this approach requires multiple taps and cognitive effort before an item reaches the cart.
             </p>
             <Quote
-              label="Main challenge:"
-              text="The challenge was designing a voice experience that reduces steps and increases accessibility without sacrificing clarity or accuracy."
+              label="Our hypotheses:"
+              text={`"By introducing voice as an interaction layer, we can reduce ordering friction, increase cart conversion, and differentiate the experience in a way that feels natural and fast."`}
             />
-            <PhoneRow
-              images={["/case-study/voice/cover-3.png", "/case-study/voice/suggest-stores.png", "/case-study/voice/cover-2.png"]}
-              captions={["Home Screen", "Store Suggestions", "Menu Browse"]}
-            />
+            {/* Intro 2 phones — exact Figma export */}
+            <FullImage src="/case-study/voice/intro-phones.png" alt="Voice ordering overview screens" />
           </motion.div>
 
           {/* Voice Interaction & Flow */}
           <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Voice Interaction & Flow</SectionTitle>
+            <SectionTitle>Voice Interaction &amp; Flow</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              Voice to Cart was designed as a structured conversation between user and system. The focus was to refine voice as the primary interaction layer — defining how speech is interpreted and confirmed before reaching the cart, before introducing text as an additional option.
+              Voice to Cart was designed as a structured conversation between user and system. The focus was to refine voice as the primary interaction layer. Defining how speech is interpreted and confirmed before reaching the cart, before introducing text as an additional option.
             </p>
-            <Quote label="Flow main highlight:">
-              <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
-                <li>Session start & speech capture</li>
-                <li>Intent parsing & clarification</li>
-                <li>Cart preview & confirmation</li>
-                <li>Error handling</li>
-              </ul>
-            </Quote>
-            <div className="w-full rounded-2xl overflow-hidden">
-              <img src="/case-study/voice/user-flow.png" alt="Voice to Cart user flow diagram" className="w-full h-auto object-contain" />
-            </div>
+            <Quote
+              label="Design principle:"
+              text={`"Voice should feel like a shortcut, not a replacement. The system confirms at each step, keeping users in control without requiring them to touch the screen."`}
+            />
+            {/* User flow diagram — exact Figma export */}
+            <FullImage src="/case-study/voice/user-flow.png" alt="Voice to cart user flow diagram" />
           </motion.div>
 
           {/* Entry & Onboarding */}
           <motion.div custom={3} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Entry & Onboarding</SectionTitle>
+            <SectionTitle>Entry &amp; Onboarding</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
               Voice ordering is accessible from the home screen through a microphone button. Tapping it starts a voice session. On first use, microphone permission is requested and a short guide explains how to place an order using voice.
             </p>
-            <PhoneRow
-              images={["/case-study/voice/jahez-home.png", "/case-study/voice/onboarding.png"]}
-              captions={["Microphone entry + tooltip in search bar", "Onboarding guide for first-time users"]}
-            />
+            {/* Onboarding phones — exact Figma export */}
+            <FullImage src="/case-study/voice/onboarding-phones.png" alt="Entry and onboarding screens" />
           </motion.div>
 
-          {/* Voice States */}
+          {/* Conversational & Dialogflow */}
           <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Voice States</SectionTitle>
+            <SectionTitle>Conversational &amp; Dialogflow</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              The voice session covers four states: idle, listening, talking, and processing — each with distinct visual feedback so users always know what the system is doing.
+              After the session starts the app begins listening. What the user says is processed in real time. If something is unclear the system asks for clarification before moving forward.
             </p>
-            <PhoneRow
-              images={["/case-study/voice/default.png", "/case-study/voice/listening.png", "/case-study/voice/talking.png"]}
-              captions={["Default / Idle", "Listening — recording speech", "System responding"]}
-            />
+            <FlowLabel>FLOW: User speaks → User speech is transcribed → System listens &amp; processes → System responds (voice + text) → Conversation continues</FlowLabel>
+            {/* 4 dialogue phones — exact Figma export */}
+            <FullImage src="/case-study/voice/dialogflow-phones.png" alt="Conversational dialogflow screens" />
           </motion.div>
 
-          {/* Store Discovery */}
+          {/* Add to Cart */}
           <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Store Discovery via Voice</SectionTitle>
+            <SectionTitle>Add to Cart</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              When users mention a cuisine or dish, the system suggests matching stores. Users can confirm a store using voice or by tapping, before item selection begins.
+              Once items are displayed, the user can add them to the cart manually or ask the system to add them by voice. The user can also request different results or adjust the search using voice without leaving the conversation.
             </p>
-            <PhoneRow
-              images={["/case-study/voice/suggest-stores.png", "/case-study/voice/add-to-cart.png"]}
-              captions={["System suggests stores", "Voice command: Add to cart"]}
-            />
+            <FlowLabel>FLOW: Results displayed → User adds item (tap or voice) → Cart updates → Mic state confirms → Conversation continues.</FlowLabel>
+            {/* 4 add-to-cart phones — exact Figma export */}
+            <FullImage src="/case-study/voice/add-to-cart-phones.png" alt="Add to cart voice flow screens" />
           </motion.div>
 
-          {/* Cart & Confirmation */}
+          {/* Review & Checkout */}
           <motion.div custom={6} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Cart & Order Confirmation</SectionTitle>
+            <SectionTitle>Review &amp; Checkout</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              After items are added, the cart appears with a summary for review. Users confirm or adjust before placing the order. A final confirmation screen closes the session.
+              After items are added users can review the cart, add more items or proceed to checkout.
             </p>
-            <PhoneRow
-              images={["/case-study/voice/items-added.png", "/case-study/voice/cart-open.png", "/case-study/voice/review-submitted.png"]}
-              captions={["Items added to cart", "Cart open for review", "Order confirmed"]}
-            />
+            <FlowLabel>FLOW: User view cart → Checkout or continue ordering → Order is submitted → Ask for user review</FlowLabel>
+            {/* 2 checkout phones — exact Figma export */}
+            <FullImage src="/case-study/voice/checkout-phones.png" alt="Review and checkout screens" />
           </motion.div>
 
-          {/* Review Order flow */}
+          {/* Final thoughts */}
           <motion.div custom={7} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Review & Submit</SectionTitle>
-            <div className="w-full rounded-2xl overflow-hidden bg-[#f4f4f4]">
-              <img src="/case-study/voice/review-order.png" alt="Review order screen" className="w-full h-auto object-contain max-h-[600px] mx-auto block" />
+            <FullImage src="/case-study/voice/final-content.png" alt="Final thoughts and impact" />
+          </motion.div>
+
+          {/* Video */}
+          <motion.div custom={8} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
+            <SectionTitle>Project Video</SectionTitle>
+            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-[#111]">
+              <iframe
+                src={VOICE_VIDEO}
+                className="w-full h-full"
+                allow="autoplay"
+                allowFullScreen
+                title="Voice to Cart Experience video"
+              />
             </div>
           </motion.div>
 
