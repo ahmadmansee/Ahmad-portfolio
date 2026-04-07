@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "wouter";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Workflow, PenLine, Play } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -47,6 +48,46 @@ const FullImage = ({ src, alt }: { src: string; alt: string }) => (
     <img src={src} alt={alt} className="w-full h-auto block" />
   </div>
 );
+
+/** Drag-to-scroll carousel */
+const DragCarousel = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDragging.current = true;
+    startX.current = e.pageX - (ref.current?.offsetLeft ?? 0);
+    scrollLeft.current = ref.current?.scrollLeft ?? 0;
+    if (ref.current) ref.current.style.cursor = "grabbing";
+  };
+  const onMouseUp = () => {
+    isDragging.current = false;
+    if (ref.current) ref.current.style.cursor = "grab";
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !ref.current) return;
+    e.preventDefault();
+    const x = e.pageX - ref.current.offsetLeft;
+    const walk = (x - startX.current) * 1.2;
+    ref.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  return (
+    <div
+      ref={ref}
+      className="overflow-x-auto pb-4 -mx-6 px-6 md:-mx-0 md:px-0 select-none"
+      style={{ cursor: "grab", scrollbarWidth: "none" }}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      onMouseMove={onMouseMove}
+    >
+      {children}
+    </div>
+  );
+};
 
 export const CaseStudyPickup = () => {
   return (
@@ -181,8 +222,68 @@ export const CaseStudyPickup = () => {
             <FullImage src="/case-study/pickup/vendor-location-cover.png" alt="Vendor location display improvement" />
           </motion.div>
 
-          {/* Usability Testing */}
+          {/* Key Screens */}
           <motion.div custom={7} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
+            {/* Header row: title + link pills */}
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-2xl md:text-[32px]">
+                Key screens
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  {
+                    href: "https://www.figma.com/design/F6LGybNfAwAfV0uFeZmRb0/Recent-work?node-id=105-49606&t=2WMBEYQQhyKyZDA9-4",
+                    icon: <Workflow size={14} />,
+                    label: "Full design flow",
+                  },
+                  {
+                    href: "https://www.figma.com/design/F6LGybNfAwAfV0uFeZmRb0/Recent-work?node-id=101-43175&t=2WMBEYQQhyKyZDA9-4",
+                    icon: <PenLine size={14} />,
+                    label: "Design spec",
+                  },
+                  {
+                    href: "https://drive.google.com/file/d/1ipsZbVaDGm0jmFdUsEd9jRz3g6F4VKCy/view?usp=sharing",
+                    icon: <Play size={14} />,
+                    label: "Video Prototype",
+                  },
+                ].map((btn) => (
+                  <a
+                    key={btn.label}
+                    href={btn.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-white text-[#25262b] text-[13px] font-bold px-3 py-1.5 rounded-full hover:bg-white/90 transition-colors whitespace-nowrap"
+                  >
+                    {btn.icon}
+                    {btn.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Horizontally draggable phone carousel */}
+            <DragCarousel>
+              <div className="flex gap-5" style={{ width: "max-content" }}>
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <div
+                    key={n}
+                    className="shrink-0 rounded-3xl overflow-hidden"
+                    style={{ width: 262, height: 538 }}
+                  >
+                    <img
+                      src={`/case-study/pickup/key-screen-${n}.png`}
+                      alt={`Key screen ${n}`}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </div>
+            </DragCarousel>
+          </motion.div>
+
+          {/* Usability Testing */}
+          <motion.div custom={8} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Usability Testing</SectionTitle>
             <ProblemSolution
               problem="Evaluate the effectiveness and usability of the new designs against the current experience."
