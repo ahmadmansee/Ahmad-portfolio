@@ -77,8 +77,8 @@ const DragCarousel = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
       ref={ref}
-      className="overflow-x-auto pb-4 -mx-6 px-6 md:-mx-0 md:px-0 select-none"
-      style={{ cursor: "grab", scrollbarWidth: "none" }}
+      className="overflow-x-auto select-none"
+      style={{ cursor: "grab", scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
@@ -262,24 +262,22 @@ export const CaseStudyPickup = () => {
             </div>
 
             {/* Horizontally draggable phone carousel */}
-            <DragCarousel>
-              <div className="flex gap-5" style={{ width: "max-content" }}>
-                {[1, 2, 3, 4, 5, 6].map((n) => (
-                  <div
-                    key={n}
-                    className="shrink-0 rounded-3xl overflow-hidden"
-                    style={{ width: 262, height: 538 }}
-                  >
+            <div className="bg-[#111] rounded-3xl px-8 py-8">
+              <DragCarousel>
+                <div className="flex gap-5 items-start" style={{ width: "max-content" }}>
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
                     <img
+                      key={n}
                       src={`/case-study/pickup/key-screen-${n}.png`}
                       alt={`Key screen ${n}`}
-                      className="w-full h-full object-cover"
+                      className="block shrink-0 rounded-2xl"
+                      style={{ height: 500, width: "auto" }}
                       draggable={false}
                     />
-                  </div>
-                ))}
-              </div>
-            </DragCarousel>
+                  ))}
+                </div>
+              </DragCarousel>
+            </div>
           </motion.div>
 
           {/* Usability Testing */}
