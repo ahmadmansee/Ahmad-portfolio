@@ -239,7 +239,7 @@ export const CaseStudyVoice = () => {
             {/* Draggable phone carousel */}
             <div className="bg-[#111] rounded-3xl px-8 py-8">
               <DragCarousel>
-                <div className="flex gap-2 items-start" style={{ width: "max-content" }}>
+                <div className="flex items-start" style={{ width: "max-content", gap: "20px" }}>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
                     <img
                       key={n}
