@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { ArrowLeft, Workflow, PenLine, Play } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { CaseStudyNav } from "@/components/CaseStudyNav";
 
 const PICKUP_VIDEO = "https://drive.google.com/file/d/1ipsZbVaDGm0jmFdUsEd9jRz3g6F4VKCy/preview";
 
@@ -347,6 +348,10 @@ export const CaseStudyPickup = () => {
         </div>
       </div>
 
+      <CaseStudyNav
+        prev={{ label: "Voice to Cart", href: "/case-study/voice" }}
+        next={{ label: "Edugla AI", href: "/case-study/edugla" }}
+      />
       <Footer linkedinSrc="/figmaAssets/linkedin.png" />
     </div>
   );

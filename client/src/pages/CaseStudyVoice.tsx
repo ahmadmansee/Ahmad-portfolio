@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "wouter";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Layout, GitBranch } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-
-const VOICE_VIDEO = "https://drive.google.com/file/d/1fQfETPDUWSsQr2EobZ1PUNqDnp0KRAUC/preview";
+import { CaseStudyNav } from "@/components/CaseStudyNav";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -27,7 +27,6 @@ const Quote = ({ label, text }: { label: string; text: string }) => (
   </div>
 );
 
-/** Renders a Figma section export at full width with no cropping */
 const FullImage = ({ src, alt }: { src: string; alt: string }) => (
   <div className="w-full rounded-3xl overflow-hidden">
     <img src={src} alt={alt} className="w-full h-auto block" />
@@ -39,6 +38,45 @@ const FlowLabel = ({ text }: { text: string }) => (
     {text}
   </p>
 );
+
+const DragCarousel = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDragging.current = true;
+    startX.current = e.pageX - (ref.current?.offsetLeft ?? 0);
+    scrollLeft.current = ref.current?.scrollLeft ?? 0;
+    if (ref.current) ref.current.style.cursor = "grabbing";
+  };
+  const onMouseUp = () => {
+    isDragging.current = false;
+    if (ref.current) ref.current.style.cursor = "grab";
+  };
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !ref.current) return;
+    e.preventDefault();
+    const x = e.pageX - ref.current.offsetLeft;
+    const walk = (x - startX.current) * 1.2;
+    ref.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  return (
+    <div
+      ref={ref}
+      className="overflow-x-auto select-none"
+      style={{ cursor: "grab", scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      onMouseMove={onMouseMove}
+    >
+      {children}
+    </div>
+  );
+};
 
 export const CaseStudyVoice = () => {
   return (
@@ -62,7 +100,6 @@ export const CaseStudyVoice = () => {
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="flex flex-col gap-7"
         >
-          {/* Brand */}
           <div className="flex items-center gap-3">
             <img src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-7 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">
@@ -70,12 +107,10 @@ export const CaseStudyVoice = () => {
             </span>
           </div>
 
-          {/* Title */}
           <h1 className="font-['Inter_Tight',Helvetica] font-semibold text-white text-4xl md:text-6xl lg:text-[64px] leading-none tracking-tight max-w-2xl">
             Voice to Cart Experience
           </h1>
 
-          {/* Meta */}
           <div className="flex flex-wrap gap-x-10 gap-y-3">
             {[
               { label: "Date", value: "Jan 12, 2026" },
@@ -89,7 +124,6 @@ export const CaseStudyVoice = () => {
             ))}
           </div>
 
-          {/* Hero cover — exact Figma export (3 phones) */}
           <div className="mt-2">
             <FullImage src="/case-study/voice/hero-cover.png" alt="Voice to Cart hero screens" />
           </div>
@@ -118,7 +152,6 @@ export const CaseStudyVoice = () => {
               label="Our hypotheses:"
               text={`"By introducing voice as an interaction layer, we can reduce ordering friction, increase cart conversion, and differentiate the experience in a way that feels natural and fast."`}
             />
-            {/* Intro 2 phones — exact Figma export */}
             <FullImage src="/case-study/voice/intro-phones.png" alt="Voice ordering overview screens" />
           </motion.div>
 
@@ -132,7 +165,6 @@ export const CaseStudyVoice = () => {
               label="Design principle:"
               text={`"Voice should feel like a shortcut, not a replacement. The system confirms at each step, keeping users in control without requiring them to touch the screen."`}
             />
-            {/* User flow diagram — exact Figma export */}
             <FullImage src="/case-study/voice/user-flow.png" alt="Voice to cart user flow diagram" />
           </motion.div>
 
@@ -142,7 +174,6 @@ export const CaseStudyVoice = () => {
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
               Voice ordering is accessible from the home screen through a microphone button. Tapping it starts a voice session. On first use, microphone permission is requested and a short guide explains how to place an order using voice.
             </p>
-            {/* Onboarding phones — exact Figma export */}
             <FullImage src="/case-study/voice/onboarding-phones.png" alt="Entry and onboarding screens" />
           </motion.div>
 
@@ -153,7 +184,6 @@ export const CaseStudyVoice = () => {
               After the session starts the app begins listening. What the user says is processed in real time. If something is unclear the system asks for clarification before moving forward.
             </p>
             <FlowLabel>FLOW: User speaks → User speech is transcribed → System listens &amp; processes → System responds (voice + text) → Conversation continues</FlowLabel>
-            {/* 4 dialogue phones — exact Figma export */}
             <FullImage src="/case-study/voice/dialogflow-phones.png" alt="Conversational dialogflow screens" />
           </motion.div>
 
@@ -164,7 +194,6 @@ export const CaseStudyVoice = () => {
               Once items are displayed, the user can add them to the cart manually or ask the system to add them by voice. The user can also request different results or adjust the search using voice without leaving the conversation.
             </p>
             <FlowLabel>FLOW: Results displayed → User adds item (tap or voice) → Cart updates → Mic state confirms → Conversation continues.</FlowLabel>
-            {/* 4 add-to-cart phones — exact Figma export */}
             <FullImage src="/case-study/voice/add-to-cart-phones.png" alt="Add to cart voice flow screens" />
           </motion.div>
 
@@ -175,31 +204,65 @@ export const CaseStudyVoice = () => {
               After items are added users can review the cart, add more items or proceed to checkout.
             </p>
             <FlowLabel>FLOW: User view cart → Checkout or continue ordering → Order is submitted → Ask for user review</FlowLabel>
-            {/* 2 checkout phones — exact Figma export */}
             <FullImage src="/case-study/voice/checkout-phones.png" alt="Review and checkout screens" />
           </motion.div>
 
-          {/* Final thoughts */}
+          {/* Key Screens */}
           <motion.div custom={7} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <FullImage src="/case-study/voice/final-content.png" alt="Final thoughts and impact" />
-          </motion.div>
+            {/* Header: title + link pills */}
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-2xl md:text-[32px]">
+                Key screens
+              </span>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="https://www.figma.com/design/zuGcvYqmTrxEKSB08EMgTF/Voice-to-cart-experience?node-id=34-14717"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-white text-[#25262b] text-[13px] font-bold px-3 py-1.5 rounded-full hover:bg-white/90 transition-colors whitespace-nowrap"
+                >
+                  <Layout size={14} />
+                  Design screens
+                </a>
+                <a
+                  href="https://www.figma.com/design/zuGcvYqmTrxEKSB08EMgTF/Voice-to-cart-experience?node-id=2004-12828"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-white text-[#25262b] text-[13px] font-bold px-3 py-1.5 rounded-full hover:bg-white/90 transition-colors whitespace-nowrap"
+                >
+                  <GitBranch size={14} />
+                  User flow
+                </a>
+              </div>
+            </div>
 
-          {/* Video */}
-          <motion.div custom={8} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Project Video</SectionTitle>
-            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-[#111]">
-              <iframe
-                src={VOICE_VIDEO}
-                className="w-full h-full"
-                allow="autoplay"
-                allowFullScreen
-                title="Voice to Cart Experience video"
-              />
+            {/* Draggable phone carousel */}
+            <div className="bg-[#111] rounded-3xl px-8 py-8">
+              <DragCarousel>
+                <div className="flex gap-5 items-start" style={{ width: "max-content" }}>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+                    <img
+                      key={n}
+                      src={`/case-study/voice/key-screens/screen-${n}.png`}
+                      alt={`Voice to Cart key screen ${n}`}
+                      className="block shrink-0 rounded-2xl"
+                      style={{ height: 500, width: "auto" }}
+                      draggable={false}
+                    />
+                  ))}
+                </div>
+              </DragCarousel>
             </div>
           </motion.div>
 
         </div>
       </div>
+
+      {/* Prev / Next navigation */}
+      <CaseStudyNav
+        prev={{ label: "Edugla AI", href: "/case-study/edugla" }}
+        next={{ label: "Map Pick-Up Experience", href: "/case-study/pickup" }}
+      />
 
       <Footer linkedinSrc="/figmaAssets/linkedin.png" />
     </div>

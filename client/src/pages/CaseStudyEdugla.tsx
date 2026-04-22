@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft } from "lucide-react";
+import { CaseStudyNav } from "@/components/CaseStudyNav";
 
 const EDUGLA_VIDEO = "https://drive.google.com/file/d/1fQfETPDUWSsQr2EobZ1PUNqDnp0KRAUC/preview";
 
@@ -242,6 +243,10 @@ export const CaseStudyEdugla = () => {
         </div>
       </div>
 
+      <CaseStudyNav
+        prev={{ label: "Map Pick-Up Experience", href: "/case-study/pickup" }}
+        next={{ label: "Voice to Cart", href: "/case-study/voice" }}
+      />
       <Footer linkedinSrc="/figmaAssets/linkedin.png" />
     </div>
   );
