@@ -101,7 +101,7 @@ export const CaseStudyVoice = () => {
           className="flex flex-col gap-7"
         >
           <div className="flex items-center gap-3">
-            <img src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-7 object-contain" />
+            <img src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-9 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">
               (Jahez Food delivery app)
             </span>
@@ -246,7 +246,7 @@ export const CaseStudyVoice = () => {
                       src={`/case-study/voice/key-screens/screen-${n}.png`}
                       alt={`Voice to Cart key screen ${n}`}
                       className="block shrink-0 rounded-2xl"
-                      style={{ height: 500, width: "auto" }}
+                      style={{ height: 500, width: 256, objectFit: "cover" }}
                       draggable={false}
                     />
                   ))}
