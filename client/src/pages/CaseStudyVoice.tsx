@@ -198,45 +198,42 @@ export const CaseStudyVoice = () => {
                   />
                 </div>
 
-                {/* ── Left annotation text ── */}
-                <div
-                  className="absolute pointer-events-none"
-                  style={{ top: 14, left: 22 }}
-                >
-                  <p style={{ color: "#EBEBEB", fontSize: 12, lineHeight: 1.65, fontFamily: "Inter Tight, Helvetica, sans-serif" }}>
-                    • Microphone entry inside the search bar<br />
-                    • Tooltip to introduce voice ordering
-                  </p>
+                {/* ── Left annotation: text + CSS line ── */}
+                {/* Text sits immediately left of the line */}
+                <div className="absolute pointer-events-none" style={{ top: 18, right: 1045 - 348 + 8, display: "flex", alignItems: "flex-start", gap: 0 }}>
+                  <div style={{ textAlign: "right" }}>
+                    <p style={{ color: "#EBEBEB", fontSize: 12.5, lineHeight: 1.65, fontFamily: "Inter Tight, Helvetica, sans-serif", margin: 0 }}>
+                      • Microphone entry inside the search bar<br />
+                      • Tooltip to introduce voice ordering
+                    </p>
+                  </div>
+                </div>
+                {/* Left CSS line – dot at x=348 */}
+                <div className="absolute pointer-events-none" style={{ top: 18, left: 343 }}>
+                  {/* dot */}
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#E040FB", marginLeft: 0 }} />
+                  {/* vertical */}
+                  <div style={{ width: 2, height: 145, backgroundColor: "#E040FB", marginLeft: 4 }} />
+                  {/* L-bracket: short horizontal going left */}
+                  <div style={{ width: 24, height: 2, backgroundColor: "#E040FB", marginLeft: 4 - 24 + 2 }} />
                 </div>
 
-                {/* ── Left annotation line ── */}
-                <img
-                  src="/case-study/voice/annotation-line.png"
-                  alt=""
-                  className="absolute pointer-events-none"
-                  style={{ top: 24, left: 404, height: 130, width: "auto" }}
-                  draggable={false}
-                />
-
-                {/* ── Right annotation text ── */}
-                <div
-                  className="absolute pointer-events-none"
-                  style={{ top: 14, left: 490 }}
-                >
-                  <p style={{ color: "#EBEBEB", fontSize: 12, lineHeight: 1.65, fontFamily: "Inter Tight, Helvetica, sans-serif" }}>
+                {/* ── Right annotation: text + CSS line ── */}
+                <div className="absolute pointer-events-none" style={{ top: 18, left: 548 }}>
+                  <p style={{ color: "#EBEBEB", fontSize: 12.5, lineHeight: 1.65, fontFamily: "Inter Tight, Helvetica, sans-serif", margin: 0 }}>
                     • Permission request (first use)<br />
                     • Lightweight onboarding screen
                   </p>
                 </div>
-
-                {/* ── Right annotation line ── */}
-                <img
-                  src="/case-study/voice/annotation-line.png"
-                  alt=""
-                  className="absolute pointer-events-none"
-                  style={{ top: 24, left: 676, height: 95, width: "auto" }}
-                  draggable={false}
-                />
+                {/* Right CSS line – dot at x=768 */}
+                <div className="absolute pointer-events-none" style={{ top: 18, left: 763 }}>
+                  {/* dot */}
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#E040FB" }} />
+                  {/* vertical */}
+                  <div style={{ width: 2, height: 85, backgroundColor: "#E040FB", marginLeft: 4 }} />
+                  {/* L-bracket: short horizontal going left */}
+                  <div style={{ width: 24, height: 2, backgroundColor: "#E040FB", marginLeft: 4 - 24 + 2 }} />
+                </div>
               </div>
             </div>
           </motion.div>
