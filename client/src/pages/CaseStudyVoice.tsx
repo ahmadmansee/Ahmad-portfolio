@@ -175,6 +175,70 @@ export const CaseStudyVoice = () => {
               Voice ordering is accessible from the home screen through a microphone button. Tapping it starts a voice session. On first use, microphone permission is requested and a short guide explains how to place an order using voice.
             </p>
             <FullImage src="/case-study/voice/onboarding-phones.png" alt="Entry and onboarding screens" />
+
+            {/* ── HTML experiment ── */}
+            <div className="w-full flex justify-center">
+              <div
+                className="relative overflow-hidden"
+                style={{
+                  width: 1045,
+                  height: 659,
+                  maxWidth: "100%",
+                  backgroundColor: "#2B2D33",
+                  borderRadius: 24,
+                }}
+              >
+                {/* Phone mockups – centred, 48 px top padding */}
+                <div className="flex justify-center" style={{ paddingTop: 48 }}>
+                  <img
+                    src="/case-study/voice/onboarding-mockup.png"
+                    alt="Onboarding phones"
+                    style={{ height: 611, width: "auto", maxWidth: "none" }}
+                    draggable={false}
+                  />
+                </div>
+
+                {/* ── Left annotation text ── */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{ top: 14, left: 22 }}
+                >
+                  <p style={{ color: "#EBEBEB", fontSize: 12, lineHeight: 1.65, fontFamily: "Inter Tight, Helvetica, sans-serif" }}>
+                    • Microphone entry inside the search bar<br />
+                    • Tooltip to introduce voice ordering
+                  </p>
+                </div>
+
+                {/* ── Left annotation line ── */}
+                <img
+                  src="/case-study/voice/annotation-line.png"
+                  alt=""
+                  className="absolute pointer-events-none"
+                  style={{ top: 24, left: 404, height: 130, width: "auto" }}
+                  draggable={false}
+                />
+
+                {/* ── Right annotation text ── */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{ top: 14, left: 490 }}
+                >
+                  <p style={{ color: "#EBEBEB", fontSize: 12, lineHeight: 1.65, fontFamily: "Inter Tight, Helvetica, sans-serif" }}>
+                    • Permission request (first use)<br />
+                    • Lightweight onboarding screen
+                  </p>
+                </div>
+
+                {/* ── Right annotation line ── */}
+                <img
+                  src="/case-study/voice/annotation-line.png"
+                  alt=""
+                  className="absolute pointer-events-none"
+                  style={{ top: 24, left: 676, height: 95, width: "auto" }}
+                  draggable={false}
+                />
+              </div>
+            </div>
           </motion.div>
 
           {/* Conversational & Dialogflow */}
