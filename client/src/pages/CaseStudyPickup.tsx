@@ -6,7 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CaseStudyNav } from "@/components/CaseStudyNav";
 
-const PICKUP_VIDEO = "https://drive.google.com/file/d/1ipsZbVaDGm0jmFdUsEd9jRz3g6F4VKCy/preview";
+
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -288,8 +288,6 @@ export const CaseStudyPickup = () => {
               problem="Evaluate the effectiveness and usability of the new designs against the current experience."
               solution="Conducted unmoderated usability testing with 10 participants (from Singapore) to assess navigation ease, information clarity, and overall user satisfaction."
             />
-            {/* 6 phone screens row — exact Figma export */}
-            <FullImage src="/case-study/pickup/usability-phones.png" alt="Usability test screens" />
           </motion.div>
 
           {/* Prototype Test */}
@@ -334,15 +332,7 @@ export const CaseStudyPickup = () => {
           {/* Video */}
           <motion.div custom={11} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Project Video</SectionTitle>
-            <div className="w-full aspect-video rounded-2xl overflow-hidden bg-[#111]">
-              <iframe
-                src={PICKUP_VIDEO}
-                className="w-full h-full"
-                allow="autoplay"
-                allowFullScreen
-                title="Pick-Up Map Experience video"
-              />
-            </div>
+            <FullImage src="/case-study/pickup/video-mockup.png" alt="Pick-Up Map Experience video mockup" />
           </motion.div>
 
         </div>
