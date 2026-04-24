@@ -265,7 +265,7 @@ export const CaseStudyPickup = () => {
             {/* Horizontally draggable phone carousel */}
             <div className="bg-[#111] rounded-3xl px-8 py-8">
               <DragCarousel>
-                <div className="flex gap-5 items-start" style={{ width: "max-content" }}>
+                <div className="flex items-start" style={{ width: "max-content", gap: 12 }}>
                   {[1, 2, 3, 4, 5, 6].map((n) => (
                     <img
                       key={n}
