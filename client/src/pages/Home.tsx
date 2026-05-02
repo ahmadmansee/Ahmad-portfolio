@@ -147,6 +147,7 @@ export const Home = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] }}
             className="w-[280px] h-[280px] md:w-[480px] md:h-[480px] lg:w-[620px] lg:h-[620px] relative"
+            data-cursor-text="That's me 👋"
           >
             <img
               className="w-full h-full object-cover"
@@ -191,6 +192,7 @@ export const Home = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-white text-white font-['Be_Vietnam_Pro',Helvetica] font-medium text-base leading-none px-5 py-3 rounded-full hover:bg-white hover:text-black transition-colors"
             data-testid="button-download-cv-hero"
+            data-cursor-text="Hire me — you won't regret it 😈"
           >
             <span>Download My CV</span>
             <Download className="w-[18px] h-[18px] stroke-[2.2]" />
