@@ -21,34 +21,21 @@ export const CustomCursor = () => {
 
     let mouseX = 0;
     let mouseY = 0;
-    let ringX = 0;
-    let ringY = 0;
-    let labelX = 0;
-    let labelY = 0;
     let raf = 0;
-    let firstMove = true;
 
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      if (firstMove) {
-        ringX = labelX = mouseX;
-        ringY = labelY = mouseY;
-        firstMove = false;
-        setVisible(true);
-      }
+      if (!visible) setVisible(true);
     };
 
+    // Direct positioning for snappy feel — no lerp lag
     const animate = () => {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
-      labelX += (mouseX - labelX) * 0.22;
-      labelY += (mouseY - labelY) * 0.22;
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${ringX - 18}px, ${ringY - 18}px, 0)`;
+        ringRef.current.style.transform = `translate3d(${mouseX - 16}px, ${mouseY - 16}px, 0)`;
       }
       if (labelRef.current) {
-        labelRef.current.style.transform = `translate3d(${labelX + 20}px, ${labelY + 20}px, 0)`;
+        labelRef.current.style.transform = `translate3d(${mouseX + 18}px, ${mouseY + 18}px, 0)`;
       }
       raf = requestAnimationFrame(animate);
     };
@@ -72,7 +59,7 @@ export const CustomCursor = () => {
     const onLeave = () => setVisible(false);
     const onEnter = () => setVisible(true);
 
-    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseover", onOver);
     window.addEventListener("mouseout", onOut);
     document.addEventListener("mouseleave", onLeave);
@@ -93,16 +80,18 @@ export const CustomCursor = () => {
 
   return (
     <>
+      {/* Ring — follows cursor instantly, only size/opacity animate */}
       <div
         ref={ringRef}
-        className={`pointer-events-none fixed top-0 left-0 z-[9998] w-9 h-9 rounded-full border border-[#cf3570] mix-blend-difference transition-[width,height,background-color,opacity,transform] duration-200 ${
-          hovering ? "bg-[#cf3570]/30 scale-150" : "bg-transparent"
-        } ${visible && !label ? "opacity-80" : "opacity-0"}`}
+        className={`pointer-events-none fixed top-0 left-0 z-[9998] w-8 h-8 rounded-full border border-[#cf3570] mix-blend-difference will-change-transform transition-[width,height,background-color,opacity,border-color] duration-150 ease-out ${
+          hovering ? "bg-[#cf3570]/20 w-10 h-10 -ml-1 -mt-1" : "bg-transparent"
+        } ${visible && !label ? "opacity-90" : "opacity-0"}`}
         aria-hidden
       />
+      {/* Label pill */}
       <div
         ref={labelRef}
-        className={`pointer-events-none fixed top-0 left-0 z-[9999] px-4 py-2 rounded-full bg-[#cf3570] text-white font-['Inter_Tight',Helvetica] font-medium text-sm whitespace-nowrap shadow-lg transition-opacity duration-200 ${
+        className={`pointer-events-none fixed top-0 left-0 z-[9999] px-4 py-2 rounded-full bg-[#cf3570] text-white font-['Inter_Tight',Helvetica] font-medium text-sm whitespace-nowrap shadow-lg will-change-transform transition-opacity duration-150 ${
           label && visible ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden

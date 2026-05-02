@@ -41,7 +41,7 @@ export const Footer = ({ linkedinSrc }: { linkedinSrc?: string }) => (
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-[#0e0e11] rounded-full px-5 py-3 font-['Inter_Tight',Helvetica] font-semibold text-base leading-none hover:bg-white/90 transition-colors shadow-sm"
             data-testid="button-download-cv-footer"
-            data-cursor-text="Hire me — you won't regret it 😈"
+            data-cursor-text="Let's work together"
           >
             <span>Download My CV</span>
             <Download className="w-[18px] h-[18px] stroke-[2.2]" />
