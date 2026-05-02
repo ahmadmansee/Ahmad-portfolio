@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { PageMeta } from "@/components/PageMeta";
 
 const experiences = [
   {
@@ -67,6 +68,10 @@ const AvailableBadge = () => (
 export const About = () => {
   return (
     <div className="bg-black min-h-screen w-full">
+      <PageMeta
+        title="About — Ahmad Mansee"
+        description="Multidisciplinary product designer with 10+ years across DeliveryHero, FlixMobility, Home24, and now Jahez Group. Berlin-based, working remotely worldwide."
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -123,7 +128,7 @@ export const About = () => {
                       Contact&nbsp;&nbsp;Me
                     </span>
                   </span>
-                  <img className="w-6 h-6" alt="Contact" src="/figmaAssets/icon-4.svg" />
+                  <img loading="lazy" className="w-6 h-6" alt="Contact" src="/figmaAssets/icon-4.svg" />
                 </a>
               </Button>
               <Button
@@ -137,7 +142,7 @@ export const About = () => {
                       Download My CV
                     </span>
                   </span>
-                  <img className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
+                  <img loading="lazy" className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
                 </a>
               </Button>
             </div>

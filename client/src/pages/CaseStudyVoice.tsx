@@ -5,6 +5,9 @@ import { ArrowLeft, Layout, GitBranch } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CaseStudyNav } from "@/components/CaseStudyNav";
+import { PageMeta } from "@/components/PageMeta";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -29,7 +32,7 @@ const Quote = ({ label, text }: { label: string; text: string }) => (
 
 const FullImage = ({ src, alt }: { src: string; alt: string }) => (
   <div className="w-full rounded-3xl overflow-hidden">
-    <img src={src} alt={alt} className="w-full h-auto block" />
+    <img loading="lazy" src={src} alt={alt} className="w-full h-auto block" />
   </div>
 );
 
@@ -81,6 +84,11 @@ const DragCarousel = ({ children }: { children: React.ReactNode }) => {
 export const CaseStudyVoice = () => {
   return (
     <div className="bg-black min-h-screen w-full">
+      <PageMeta
+        title="Voice to Cart — Jahez | Ahmad Mansee"
+        description="Case study: designing a voice-driven add-to-cart experience for Jahez, blending conversation design with mobile commerce."
+      />
+      <ScrollProgress />
       <Navbar />
 
       {/* ───── Hero ───── */}
@@ -101,7 +109,7 @@ export const CaseStudyVoice = () => {
           className="flex flex-col gap-7"
         >
           <div className="flex items-center gap-3">
-            <img src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-9 object-contain" />
+            <img loading="lazy" src="/case-study/voice/jahez-logo.png" alt="Jahez" className="h-9 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">
               (Jahez Food delivery app)
             </span>
@@ -265,6 +273,7 @@ export const CaseStudyVoice = () => {
       />
 
       <Footer linkedinSrc="/figmaAssets/linkedin.png" />
+      <ScrollToTop />
     </div>
   );
 };

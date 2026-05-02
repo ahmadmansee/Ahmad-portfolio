@@ -6,6 +6,9 @@ import { ArrowLeft, Workflow, PenLine, Play } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CaseStudyNav } from "@/components/CaseStudyNav";
+import { PageMeta } from "@/components/PageMeta";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const PICKUP_VIDEO = "https://drive.google.com/file/d/1ipsZbVaDGm0jmFdUsEd9jRz3g6F4VKCy/preview";
 
@@ -80,7 +83,7 @@ const ProblemSolution = ({ problem, solution }: { problem: string; solution: str
 /** Renders a Figma section export at full width with no cropping */
 const FullImage = ({ src, alt }: { src: string; alt: string }) => (
   <div className="w-full rounded-3xl overflow-hidden">
-    <img src={src} alt={alt} className="w-full h-auto block" />
+    <img loading="lazy" src={src} alt={alt} className="w-full h-auto block" />
   </div>
 );
 
@@ -127,6 +130,11 @@ const DragCarousel = ({ children }: { children: React.ReactNode }) => {
 export const CaseStudyPickup = () => {
   return (
     <div className="bg-black min-h-screen w-full">
+      <PageMeta
+        title="Revamping the Pick-Up Map Experience — Ahmad Mansee"
+        description="Case study: redesigning Delivery Hero's pick-up map experience to improve discoverability, clarity, and user confidence."
+      />
+      <ScrollProgress />
       <Navbar />
 
       {/* ───── Hero ───── */}
@@ -148,7 +156,7 @@ export const CaseStudyPickup = () => {
         >
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <img src="/case-study/pickup/dh-logo.png" alt="Delivery Hero" className="h-8 object-contain" />
+            <img loading="lazy" src="/case-study/pickup/dh-logo.png" alt="Delivery Hero" className="h-8 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">
               Delivery Hero
             </span>
@@ -369,7 +377,7 @@ export const CaseStudyPickup = () => {
                 <div key={id} className="bg-[#2B2D33] rounded-2xl p-5 flex flex-col gap-2">
                   <span className="text-2xl">{emoji}</span>
                   <span className="font-['Inter_Tight',Helvetica] font-bold text-white text-lg leading-snug">{stat}</span>
-                  <span className="font-['Inter_Tight',Helvetica] text-[#aaa] text-sm leading-relaxed">{label}</span>
+                  <span className="font-['Inter_Tight',Helvetica] text-[#b8b8b8] text-sm leading-relaxed">{label}</span>
                 </div>
               ))}
             </div>
@@ -389,6 +397,7 @@ export const CaseStudyPickup = () => {
         next={{ label: "Edugla AI", href: "/case-study/edugla" }}
       />
       <Footer linkedinSrc="/figmaAssets/linkedin.png" />
+      <ScrollToTop />
     </div>
   );
 };

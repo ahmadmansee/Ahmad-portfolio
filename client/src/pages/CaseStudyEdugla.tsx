@@ -4,6 +4,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { CaseStudyNav } from "@/components/CaseStudyNav";
+import { PageMeta } from "@/components/PageMeta";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const EDUGLA_VIDEO = "https://drive.google.com/file/d/1fQfETPDUWSsQr2EobZ1PUNqDnp0KRAUC/preview";
 
@@ -52,13 +55,18 @@ const ProblemSolution = ({
 /** A full-width image that renders the Figma frame export as-is (already includes browser chrome). */
 const FullImage = ({ src, alt }: { src: string; alt: string }) => (
   <div className="w-full rounded-3xl overflow-hidden">
-    <img src={src} alt={alt} className="w-full h-auto block" />
+    <img loading="lazy" src={src} alt={alt} className="w-full h-auto block" />
   </div>
 );
 
 export const CaseStudyEdugla = () => {
   return (
     <div className="bg-black min-h-screen w-full">
+      <PageMeta
+        title="Edugla AI — Case Study | Ahmad Mansee"
+        description="Case study: designing Edugla, an AI-powered EdTech platform that personalizes learning at scale."
+      />
+      <ScrollProgress />
       <Navbar />
 
       {/* ───── Hero ───── */}
@@ -80,7 +88,7 @@ export const CaseStudyEdugla = () => {
         >
           {/* Brand */}
           <div className="flex items-center gap-4">
-            <img src="/case-study/edugla/edugla-logo.png" alt="Edugla" className="h-10 object-contain" />
+            <img loading="lazy" src="/case-study/edugla/edugla-logo.png" alt="Edugla" className="h-10 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">Edugla</span>
           </div>
 
@@ -248,6 +256,7 @@ export const CaseStudyEdugla = () => {
         next={{ label: "Voice to Cart", href: "/case-study/voice" }}
       />
       <Footer linkedinSrc="/figmaAssets/linkedin.png" />
+      <ScrollToTop />
     </div>
   );
 };

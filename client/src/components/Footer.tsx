@@ -42,8 +42,25 @@ export const Footer = ({ linkedinSrc = "/figmaAssets/linkedin.png" }: { linkedin
               <img className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
             </a>
           </Button>
-          <a href="https://www.linkedin.com/in/ahmadmansee/" target="_blank" rel="noopener noreferrer">
-            <img className="w-8 h-auto" alt="LinkedIn" src={linkedinSrc} />
+          <a
+            href="https://www.linkedin.com/in/ahmadmansee/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="hover:opacity-80 transition-opacity"
+            data-testid="link-linkedin"
+          >
+            <img className="w-8 h-auto" alt="LinkedIn" src={linkedinSrc} loading="lazy" />
+          </a>
+          <a
+            href="mailto:ahmad.mansee@gmail.com"
+            aria-label="Email"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-colors"
+            data-testid="link-email"
+          >
+            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
           </a>
         </div>
       </div>

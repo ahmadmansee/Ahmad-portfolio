@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PageMeta } from "@/components/PageMeta";
 
 export const Contact = () => {
   return (
     <div className="bg-black min-h-screen w-full flex flex-col">
+      <PageMeta
+        title="Contact — Ahmad Mansee"
+        description="Have a project in mind, a collaboration request, or just want to connect? Let's talk."
+      />
       <Navbar />
 
       <main className="flex-1 flex flex-col items-center justify-center px-6 md:px-20 py-16 md:py-[88px]">

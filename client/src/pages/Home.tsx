@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { PageMeta } from "@/components/PageMeta";
 
 const projects = [
   {
@@ -109,7 +110,7 @@ const ProjectCard = ({
       </div>
       <Link href={project.href}>
         <div className="flex w-12 h-12 bg-[#fcfcfc] border border-[#0e0e11] items-center justify-center rounded-3xl overflow-hidden cursor-pointer hover:bg-white/90 transition-colors flex-shrink-0">
-          <img className="w-6 h-6" alt="Arrow" src="/figmaAssets/icon-2.svg" />
+          <img loading="lazy" className="w-6 h-6" alt="Arrow" src="/figmaAssets/icon-2.svg" />
         </div>
       </Link>
     </div>
@@ -119,6 +120,10 @@ const ProjectCard = ({
 export const Home = () => {
   return (
     <div className="bg-black min-h-screen w-full">
+      <PageMeta
+        title="Ahmad Mansee — Product & UX Designer"
+        description="Multidisciplinary designer focused on AI-driven digital products. See my work across mobile, web, and AI experiences."
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -162,6 +167,10 @@ export const Home = () => {
               Hi, I'm Ahmad, a multidisciplinary designer focused on AI-driven
               digital products.
             </p>
+            <p className="font-['Inter_Tight',Helvetica] font-normal text-[#b8b8b8] text-base md:text-lg leading-relaxed">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#cf3570] mr-2 align-middle" />
+              Currently designing principal product experiences at Jahez Group
+            </p>
           </div>
           <a
             href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing"
@@ -170,7 +179,7 @@ export const Home = () => {
             className="inline-flex items-center gap-0 border border-white text-white font-['Be_Vietnam_Pro',Helvetica] font-medium text-base leading-[1.6] px-3.5 py-3 rounded-3xl hover:bg-white/10 transition-colors"
           >
             <span className="px-2">Download My CV</span>
-            <img className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
+            <img loading="lazy" className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
           </a>
         </motion.div>
       </section>
