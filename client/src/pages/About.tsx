@@ -54,6 +54,91 @@ const fadeUp = {
   }),
 };
 
+const journey = [
+  { city: "Amman", country: "Jordan", caption: "Where it started" },
+  { city: "Berlin", country: "Germany", caption: "Nearly a decade" },
+  { city: "Riyadh", country: "Saudi Arabia", caption: "Currently here", current: true },
+];
+
+const JourneyStrip = () => (
+  <section className="w-full max-w-[1440px] mx-auto px-6 md:px-20 pt-4 md:pt-8 pb-12 md:pb-20">
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className="border-t border-white/10 pt-12 md:pt-16"
+    >
+      <div className="flex items-center gap-3 mb-8 md:mb-12">
+        <div className="w-1.5 h-1.5 rounded-full bg-[#cf3570]" />
+        <span className="font-['Be_Vietnam_Pro',Helvetica] uppercase tracking-[0.2em] text-[11px] md:text-xs text-[#95989c]">
+          The journey
+        </span>
+      </div>
+      <ol
+        className="flex flex-col md:flex-row md:items-end gap-8 md:gap-0 list-none"
+        aria-label="Career journey across cities"
+      >
+        {journey.map((stop, i) => (
+          <li key={stop.city} className="flex md:flex-1 items-end gap-6 md:gap-0">
+            {/* connector before (desktop only, not first item) */}
+            {i > 0 && (
+              <div
+                aria-hidden
+                className="hidden md:block flex-1 h-px bg-gradient-to-r from-white/10 via-white/20 to-white/10 mb-6"
+              />
+            )}
+            <motion.div
+              custom={i}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex flex-col gap-2 md:gap-3 md:px-6 lg:px-10 relative"
+              data-testid={`journey-stop-${stop.city.toLowerCase()}`}
+            >
+              <span className="font-['Be_Vietnam_Pro',Helvetica] uppercase tracking-[0.15em] text-xs text-[#95989c]">
+                {stop.country}
+              </span>
+              <div className="flex items-center gap-3">
+                <h3 className="font-['Inter_Tight',Helvetica] font-semibold text-white text-3xl md:text-5xl lg:text-6xl tracking-[-0.02em] leading-none">
+                  {stop.city}
+                </h3>
+                {stop.current && (
+                  <span
+                    className="relative flex w-2.5 h-2.5"
+                    role="img"
+                    aria-label="Current location"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute inline-flex h-full w-full rounded-full bg-[#cf3570] opacity-60 animate-ping"
+                    />
+                    <span
+                      aria-hidden
+                      className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#cf3570]"
+                    />
+                  </span>
+                )}
+              </div>
+              <span className="font-['Inter_Tight',Helvetica] font-normal text-[#aaaab3] text-sm md:text-base">
+                {stop.caption}
+              </span>
+            </motion.div>
+            {/* mobile vertical connector */}
+            {i < journey.length - 1 && (
+              <div
+                aria-hidden
+                className="md:hidden w-px h-12 bg-gradient-to-b from-white/20 to-white/5 ml-4"
+              />
+            )}
+          </li>
+        ))}
+      </ol>
+    </motion.div>
+  </section>
+);
+
 const AvailableBadge = () => (
   <div className="inline-flex items-center gap-2">
     <div className="flex w-[19px] h-[19px] items-center p-[3px] bg-[#29b31d2b] rounded-full">
@@ -112,9 +197,9 @@ export const About = () => {
             </h1>
             <p className="font-['Inter_Tight',Helvetica] font-normal text-white text-lg md:text-xl leading-8">
               A product designer, VUI designer, and UI/UX mentor currently
-              located in Berlin, with roots in Amman, Jordan. My passion lies in
-              creating digital products that meet human needs while elevating
-              aesthetics.
+              based in Riyadh — with roots in Amman, Jordan and nearly a decade
+              in Berlin. My passion lies in creating digital products that meet
+              human needs while elevating aesthetics.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Button
@@ -149,6 +234,9 @@ export const About = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Journey Strip */}
+      <JourneyStrip />
 
       {/* Experience Section */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-20 py-16 md:py-[88px]">
