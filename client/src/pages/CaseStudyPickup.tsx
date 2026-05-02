@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "wouter";
 import { ArrowLeft, Workflow, PenLine, Play } from "lucide-react";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CaseStudyNav } from "@/components/CaseStudyNav";
+
+const PICKUP_VIDEO = "https://drive.google.com/file/d/1ipsZbVaDGm0jmFdUsEd9jRz3g6F4VKCy/preview";
 
 
 
