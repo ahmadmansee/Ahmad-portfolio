@@ -11,6 +11,37 @@ const PICKUP_VIDEO = "https://drive.google.com/file/d/1ipsZbVaDGm0jmFdUsEd9jRz3g
 
 
 
+const VideoPlayer = ({ src, poster }: { src: string; poster: string }) => {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <div className="w-full rounded-3xl overflow-hidden bg-black" style={{ aspectRatio: "9/16", maxWidth: 380, margin: "0 auto" }}>
+      {playing ? (
+        <iframe
+          src={src}
+          className="w-full h-full"
+          allow="autoplay"
+          allowFullScreen
+          title="Pick-Up Map Experience video"
+        />
+      ) : (
+        <div className="relative w-full h-full cursor-pointer group" onClick={() => setPlaying(true)}>
+          <img
+            src={poster}
+            alt="Pick-Up Map Experience preview"
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+            <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+              <Play className="w-7 h-7 text-black fill-black ml-1" />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
@@ -326,16 +357,28 @@ export const CaseStudyPickup = () => {
           {/* Success Metrics */}
           <motion.div custom={10} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Success Metrics & Final Thoughts</SectionTitle>
-            <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              Which version of the map do you prefer? And follow up questions.
-            </p>
-            <FullImage src="/case-study/pickup/success-metrics-cover.png" alt="Success metrics and final thoughts" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { emoji: "🗺️", id: "info-clarity", stat: "90%", label: "found the map pins effectively displayed key info like discounts and ratings" },
+                { emoji: "🧭", id: "nav-ease", stat: "80%", label: "found it easy to navigate between Hotz. and Vert views and explore restaurants" },
+                { emoji: "✅", id: "preference", stat: "80%", label: "preferred the new map design over the control for its clarity and modern look" },
+                { emoji: "💬", id: "quote", stat: "\"The selected 3D house pin stood out clearly from others\"", label: "— usability test participant" },
+                { emoji: "🎨", id: "feel", stat: "Calmer & Familiar", label: "users described the new design as less noisy and reminiscent of Google Maps" },
+                { emoji: "🚀", id: "takeaway", stat: "Key Takeaway", label: "Iterating on the map pin design and layout significantly improved discoverability and user confidence" },
+              ].map(({ emoji, id, stat, label }) => (
+                <div key={id} className="bg-[#2B2D33] rounded-2xl p-5 flex flex-col gap-2">
+                  <span className="text-2xl">{emoji}</span>
+                  <span className="font-['Inter_Tight',Helvetica] font-bold text-white text-lg leading-snug">{stat}</span>
+                  <span className="font-['Inter_Tight',Helvetica] text-[#aaa] text-sm leading-relaxed">{label}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Video */}
           <motion.div custom={11} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Project Video</SectionTitle>
-            <FullImage src="/case-study/pickup/video-mockup.png" alt="Pick-Up Map Experience video mockup" />
+            <VideoPlayer src={PICKUP_VIDEO} poster="/case-study/pickup/video-mockup.png" />
           </motion.div>
 
         </div>
