@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageMeta } from "@/components/PageMeta";
@@ -45,8 +46,9 @@ const fadeUp = {
 
 const AvailableBadge = () => (
   <div className="inline-flex items-center gap-2">
-    <div className="flex w-[19px] h-[19px] items-center gap-2 p-[3px] bg-[#29b31d2b] rounded-full">
-      <div className="w-[13px] h-[13px] bg-[#2ab41d] rounded-full" />
+    <div className="relative flex w-[19px] h-[19px] items-center gap-2 p-[3px] bg-[#29b31d2b] rounded-full">
+      <span className="absolute inset-[3px] rounded-full bg-[#2ab41d] opacity-60 animate-ping" />
+      <div className="relative w-[13px] h-[13px] bg-[#2ab41d] rounded-full" />
     </div>
     <span className="font-['Be_Vietnam_Pro',Helvetica] font-normal text-white text-base md:text-xl leading-8">
       Available for work
@@ -164,7 +166,15 @@ export const Home = () => {
           <div className="flex flex-col items-center gap-6 max-w-4xl w-full">
             <AvailableBadge />
             <p className="font-['Inter_Tight',Helvetica] font-medium text-white text-3xl md:text-5xl lg:text-6xl leading-tight opacity-80">
-              Hi, I'm Ahmad, a multidisciplinary designer focused on AI-driven
+              Hi{" "}
+              <motion.span
+                className="inline-block origin-[70%_70%]"
+                animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 2.4, ease: "easeInOut" }}
+              >
+                👋
+              </motion.span>
+              , I'm Ahmad, a multidisciplinary designer focused on AI-driven
               digital products.
             </p>
             <p className="font-['Inter_Tight',Helvetica] font-normal text-[#b8b8b8] text-base md:text-lg leading-relaxed">
@@ -172,15 +182,19 @@ export const Home = () => {
               Currently designing principal product experiences at Jahez Group
             </p>
           </div>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
             href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-0 border border-white text-white font-['Be_Vietnam_Pro',Helvetica] font-medium text-base leading-[1.6] px-3.5 py-3 rounded-3xl hover:bg-white/10 transition-colors"
+            className="inline-flex items-center gap-2 border border-white text-white font-['Be_Vietnam_Pro',Helvetica] font-medium text-base leading-none px-5 py-3 rounded-full hover:bg-white hover:text-black transition-colors"
+            data-testid="button-download-cv-hero"
           >
-            <span className="px-2">Download My CV</span>
-            <img loading="lazy" className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
-          </a>
+            <span>Download My CV</span>
+            <Download className="w-[18px] h-[18px] stroke-[2.2]" />
+          </motion.a>
         </motion.div>
       </section>
 

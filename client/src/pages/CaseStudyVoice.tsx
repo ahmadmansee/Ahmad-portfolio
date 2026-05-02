@@ -36,9 +36,9 @@ const FullImage = ({ src, alt }: { src: string; alt: string }) => (
   </div>
 );
 
-const FlowLabel = ({ text }: { text: string }) => (
+const FlowLabel = ({ children }: { children: React.ReactNode }) => (
   <p className="font-['Inter_Tight',Helvetica] font-medium text-[#cf3570] text-sm tracking-widest uppercase">
-    {text}
+    {children}
   </p>
 );
 

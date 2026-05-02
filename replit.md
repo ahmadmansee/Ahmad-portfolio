@@ -55,7 +55,13 @@ client/
 - **SEO:** Per-page `<PageMeta>` (title + description + OG/Twitter), `robots.txt`, `sitemap.xml`, OG image (1200×630)
 - **Performance:** Trimmed Google Fonts request (40 → 3 families), `loading="lazy"` on below-fold images
 - **UX:** `<ScrollProgress>` bar at top of case studies, `<ScrollToTop>` floating button, branded 404 page
-- **Polish:** Hero "Currently" status line, Footer email icon, accessible LinkedIn link, color contrast bump (`#aaa` → `#b8b8b8`)
+- **Routing:** Global `<ScrollRestoration>` mounted in `App.tsx` — every route change resets scroll to top (prev/next case study buttons no longer land on the bottom)
+- **Delight pass:**
+  - `<CustomCursor>` (desktop only) — subtle pink ring trails the cursor and grows on hover of interactive elements
+  - 👋 wave emoji wiggle on the home greeting (every ~4s)
+  - Pulsing green dot on "Available for work" badge
+  - Spring-scale hover/tap on hero + footer CV buttons, footer LinkedIn pill
+- **Polish:** Hero "Currently" status line, Footer cleaned up (Email icon removed, crisp Lucide `Linkedin` icon, rebuilt Download CV button — no more pixelation), color contrast bump (`#aaa` → `#b8b8b8`)
 - **Pickup case study:** `VideoPlayer` with phone mockup, emoji metric grid, updated test images
 
 ## Forbidden / Pinned

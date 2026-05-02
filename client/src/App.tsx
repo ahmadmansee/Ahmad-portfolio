@@ -10,6 +10,8 @@ import { Contact } from "@/pages/Contact";
 import { CaseStudyPickup } from "@/pages/CaseStudyPickup";
 import { CaseStudyEdugla } from "@/pages/CaseStudyEdugla";
 import { CaseStudyVoice } from "@/pages/CaseStudyVoice";
+import { ScrollRestoration } from "@/components/ScrollRestoration";
+import { CustomCursor } from "@/components/CustomCursor";
 
 function Router() {
   return (
@@ -30,6 +32,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <ScrollRestoration />
+        <CustomCursor />
         <Router />
       </TooltipProvider>
     </QueryClientProvider>

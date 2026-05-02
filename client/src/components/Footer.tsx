@@ -1,11 +1,14 @@
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Download, Linkedin } from "lucide-react";
 
 const contactInfo = [
   { label: "Phone:", value: "+4917636067590" },
   { label: "Mail:", value: "ahmad.mansee@gmail.com" },
 ];
 
-export const Footer = ({ linkedinSrc = "/figmaAssets/linkedin.png" }: { linkedinSrc?: string }) => (
+const CV_URL = "https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing";
+
+export const Footer = ({ linkedinSrc }: { linkedinSrc?: string }) => (
   <footer className="w-full bg-black border-t border-white/10">
     <div className="max-w-[1440px] mx-auto px-6 md:px-20 py-16 md:py-[88px] flex flex-col gap-12 md:gap-[60px]">
       <h2 className="font-['Inter_Tight',Helvetica] font-normal text-white text-4xl md:text-6xl leading-tight">
@@ -21,6 +24,7 @@ export const Footer = ({ linkedinSrc = "/figmaAssets/linkedin.png" }: { linkedin
               <a
                 href={info.label === "Mail:" ? `mailto:${info.value}` : `tel:${info.value}`}
                 className="font-['Inter_Tight',Helvetica] font-normal text-white text-xl md:text-2xl leading-normal underline hover:text-white/80 transition-colors"
+                data-testid={info.label === "Mail:" ? "link-footer-email" : "link-footer-phone"}
               >
                 {info.value}
               </a>
@@ -28,40 +32,32 @@ export const Footer = ({ linkedinSrc = "/figmaAssets/linkedin.png" }: { linkedin
           ))}
         </div>
         <div className="flex items-center gap-5">
-          <Button
-            className="h-auto inline-flex bg-white items-center justify-center px-3.5 py-3 rounded-3xl gap-0 hover:bg-white/90"
-            variant="ghost"
-            asChild
+          <motion.a
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 400, damping: 18 }}
+            href={CV_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white text-[#0e0e11] rounded-full px-5 py-3 font-['Inter_Tight',Helvetica] font-semibold text-base leading-none hover:bg-white/90 transition-colors shadow-sm"
+            data-testid="button-download-cv-footer"
           >
-            <a href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-              <span className="inline-flex items-center justify-center px-2 py-0">
-                <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#222222] text-base leading-[1.6]">
-                  Download My CV
-                </span>
-              </span>
-              <img className="w-6 h-6" alt="Download" src="/figmaAssets/icon-1.svg" />
-            </a>
-          </Button>
-          <a
+            <span>Download My CV</span>
+            <Download className="w-[18px] h-[18px] stroke-[2.2]" />
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.08, rotate: -4 }}
+            whileTap={{ scale: 0.94 }}
+            transition={{ type: "spring", stiffness: 400, damping: 14 }}
             href="https://www.linkedin.com/in/ahmadmansee/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="hover:opacity-80 transition-opacity"
+            aria-label="LinkedIn profile"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 text-white border border-white/15 hover:bg-[#cf3570] hover:border-[#cf3570] transition-colors"
             data-testid="link-linkedin"
           >
-            <img className="w-8 h-auto" alt="LinkedIn" src={linkedinSrc} loading="lazy" />
-          </a>
-          <a
-            href="mailto:ahmad.mansee@gmail.com"
-            aria-label="Email"
-            className="w-8 h-8 flex items-center justify-center rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-colors"
-            data-testid="link-email"
-          >
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </a>
+            <Linkedin className="w-5 h-5" fill="currentColor" strokeWidth={0} />
+          </motion.a>
         </div>
       </div>
     </div>
