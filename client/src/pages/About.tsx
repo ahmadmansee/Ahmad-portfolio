@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -54,104 +53,6 @@ const fadeUp = {
     transition: { duration: 0.7, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] },
   }),
 };
-
-const journey = [
-  { city: "Amman", country: "Jordan", caption: "Where it started" },
-  { city: "Berlin", country: "Germany", caption: "Nearly a decade" },
-  {
-    city: "Riyadh ⇄ Berlin",
-    country: "Splitting time",
-    caption: "Currently between",
-    current: true,
-  },
-];
-
-const JourneyStrip = () => (
-  <section className="w-full max-w-[1440px] mx-auto px-6 md:px-20 pt-4 md:pt-8 pb-12 md:pb-20">
-    <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
-      className="border-t border-white/10 pt-12 md:pt-16"
-    >
-      <div className="flex items-center gap-3 mb-8 md:mb-12">
-        <div className="w-1.5 h-1.5 rounded-full bg-[#cf3570]" />
-        <span className="font-['Be_Vietnam_Pro',Helvetica] uppercase tracking-[0.2em] text-[11px] md:text-xs text-[#95989c]">
-          The journey
-        </span>
-      </div>
-      <ol
-        className="flex flex-col md:flex-row md:items-end gap-8 md:gap-0 list-none"
-        aria-label="Career journey across cities"
-      >
-        {journey.map((stop, i) => (
-          <li key={stop.city} className="flex md:flex-1 items-end gap-6 md:gap-0">
-            {/* connector before (desktop only, not first item) */}
-            {i > 0 && (
-              <div
-                aria-hidden
-                className="hidden md:flex flex-1 items-center mb-6 px-2"
-              >
-                <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-white/30" />
-                <ArrowRight className="w-4 h-4 mx-2 text-[#cf3570]" strokeWidth={2.5} />
-                <div className="flex-1 h-px bg-gradient-to-r from-white/30 to-white/10" />
-              </div>
-            )}
-            <motion.div
-              custom={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex flex-col gap-2 md:gap-3 md:px-6 lg:px-10 relative"
-              data-testid={`journey-stop-${stop.city.toLowerCase()}`}
-            >
-              <span className="font-['Be_Vietnam_Pro',Helvetica] uppercase tracking-[0.15em] text-xs text-[#95989c]">
-                {stop.country}
-              </span>
-              <div className="flex items-center gap-3">
-                <h3 className="font-['Inter_Tight',Helvetica] font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-[-0.02em] leading-none">
-                  {stop.city}
-                </h3>
-                {stop.current && (
-                  <span
-                    className="relative flex w-2.5 h-2.5"
-                    role="img"
-                    aria-label="Current location"
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute inline-flex h-full w-full rounded-full bg-[#cf3570] opacity-60 animate-ping"
-                    />
-                    <span
-                      aria-hidden
-                      className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#cf3570]"
-                    />
-                  </span>
-                )}
-              </div>
-              <span className="font-['Inter_Tight',Helvetica] font-normal text-[#aaaab3] text-sm md:text-base">
-                {stop.caption}
-              </span>
-            </motion.div>
-            {/* mobile vertical connector */}
-            {i < journey.length - 1 && (
-              <div
-                aria-hidden
-                className="md:hidden flex flex-col items-center ml-4 self-stretch"
-              >
-                <div className="w-px flex-1 bg-white/20" />
-                <ArrowDown className="w-4 h-4 my-1 text-[#cf3570]" strokeWidth={2.5} />
-                <div className="w-px flex-1 bg-white/20" />
-              </div>
-            )}
-          </li>
-        ))}
-      </ol>
-    </motion.div>
-  </section>
-);
 
 const AvailableBadge = () => (
   <div className="inline-flex items-center gap-2">
@@ -221,7 +122,11 @@ export const About = () => {
                 variant="ghost"
                 asChild
               >
-                <a href="mailto:ahmad.mansee@gmail.com">
+                <a
+                  href="mailto:ahmad.mansee@gmail.com"
+                  data-cursor-text="Drop me a line"
+                  data-testid="button-contact-about"
+                >
                   <span className="inline-flex items-center justify-center px-2">
                     <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#222222] text-base leading-[1.6]">
                       Contact&nbsp;&nbsp;Me
@@ -235,7 +140,13 @@ export const About = () => {
                 variant="outline"
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor-text="Let's work together"
+                  data-testid="button-download-cv-about"
+                >
                   <span className="inline-flex items-center justify-center px-2">
                     <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-base leading-[1.6]">
                       Download My CV
@@ -248,9 +159,6 @@ export const About = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Journey Strip */}
-      <JourneyStrip />
 
       {/* Experience Section */}
       <section className="w-full max-w-[1440px] mx-auto px-6 md:px-20 py-16 md:py-[88px]">
