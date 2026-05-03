@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowRight, ArrowDown } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -57,7 +58,12 @@ const fadeUp = {
 const journey = [
   { city: "Amman", country: "Jordan", caption: "Where it started" },
   { city: "Berlin", country: "Germany", caption: "Nearly a decade" },
-  { city: "Riyadh", country: "Saudi Arabia", caption: "Currently here", current: true },
+  {
+    city: "Riyadh ⇄ Berlin",
+    country: "Splitting time",
+    caption: "Currently between",
+    current: true,
+  },
 ];
 
 const JourneyStrip = () => (
@@ -85,8 +91,12 @@ const JourneyStrip = () => (
             {i > 0 && (
               <div
                 aria-hidden
-                className="hidden md:block flex-1 h-px bg-gradient-to-r from-white/10 via-white/20 to-white/10 mb-6"
-              />
+                className="hidden md:flex flex-1 items-center mb-6 px-2"
+              >
+                <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-white/30" />
+                <ArrowRight className="w-4 h-4 mx-2 text-[#cf3570]" strokeWidth={2.5} />
+                <div className="flex-1 h-px bg-gradient-to-r from-white/30 to-white/10" />
+              </div>
             )}
             <motion.div
               custom={i}
@@ -101,7 +111,7 @@ const JourneyStrip = () => (
                 {stop.country}
               </span>
               <div className="flex items-center gap-3">
-                <h3 className="font-['Inter_Tight',Helvetica] font-semibold text-white text-3xl md:text-5xl lg:text-6xl tracking-[-0.02em] leading-none">
+                <h3 className="font-['Inter_Tight',Helvetica] font-semibold text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-[-0.02em] leading-none">
                   {stop.city}
                 </h3>
                 {stop.current && (
@@ -129,8 +139,12 @@ const JourneyStrip = () => (
             {i < journey.length - 1 && (
               <div
                 aria-hidden
-                className="md:hidden w-px h-12 bg-gradient-to-b from-white/20 to-white/5 ml-4"
-              />
+                className="md:hidden flex flex-col items-center ml-4 self-stretch"
+              >
+                <div className="w-px flex-1 bg-white/20" />
+                <ArrowDown className="w-4 h-4 my-1 text-[#cf3570]" strokeWidth={2.5} />
+                <div className="w-px flex-1 bg-white/20" />
+              </div>
             )}
           </li>
         ))}
@@ -197,8 +211,8 @@ export const About = () => {
             </h1>
             <p className="font-['Inter_Tight',Helvetica] font-normal text-white text-lg md:text-xl leading-8">
               A product designer, VUI designer, and UI/UX mentor currently
-              based in Riyadh — with roots in Amman, Jordan and nearly a decade
-              in Berlin. My passion lies in creating digital products that meet
+              splitting time between Riyadh and Berlin, with roots in Amman,
+              Jordan. My passion lies in creating digital products that meet
               human needs while elevating aesthetics.
             </p>
             <div className="flex flex-wrap items-center gap-4">
