@@ -133,7 +133,7 @@ export const CaseStudyVoice = () => {
           </div>
 
           <div className="mt-2">
-            <FullImage src="/case-study/voice/hero-cover.png" alt="Voice to Cart hero screens" />
+            <FullImage src="/case-study/voice/hero-cover.webp" alt="Voice to Cart hero screens" />
           </div>
         </motion.div>
       </div>
@@ -160,7 +160,7 @@ export const CaseStudyVoice = () => {
               label="Our hypotheses:"
               text={`"By introducing voice as an interaction layer, we can reduce ordering friction, increase cart conversion, and differentiate the experience in a way that feels natural and fast."`}
             />
-            <FullImage src="/case-study/voice/intro-phones.png" alt="Voice ordering overview screens" />
+            <FullImage src="/case-study/voice/intro-phones.webp" alt="Voice ordering overview screens" />
           </motion.div>
 
           {/* Voice Interaction & Flow */}
@@ -173,7 +173,7 @@ export const CaseStudyVoice = () => {
               label="Design principle:"
               text={`"Voice should feel like a shortcut, not a replacement. The system confirms at each step, keeping users in control without requiring them to touch the screen."`}
             />
-            <FullImage src="/case-study/voice/user-flow.png" alt="Voice to cart user flow diagram" />
+            <FullImage src="/case-study/voice/user-flow.webp" alt="Voice to cart user flow diagram" />
           </motion.div>
 
           {/* Entry & Onboarding */}
@@ -182,7 +182,7 @@ export const CaseStudyVoice = () => {
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
               Voice ordering is accessible from the home screen through a microphone button. Tapping it starts a voice session. On first use, microphone permission is requested and a short guide explains how to place an order using voice.
             </p>
-            <FullImage src="/case-study/voice/onboarding-phones.png" alt="Entry and onboarding screens" />
+            <FullImage src="/case-study/voice/onboarding-phones.webp" alt="Entry and onboarding screens" />
           </motion.div>
 
           {/* Conversational & Dialogflow */}
@@ -192,7 +192,7 @@ export const CaseStudyVoice = () => {
               After the session starts the app begins listening. What the user says is processed in real time. If something is unclear the system asks for clarification before moving forward.
             </p>
             <FlowLabel>FLOW: User speaks → User speech is transcribed → System listens &amp; processes → System responds (voice + text) → Conversation continues</FlowLabel>
-            <FullImage src="/case-study/voice/dialogflow-phones.png" alt="Conversational dialogflow screens" />
+            <FullImage src="/case-study/voice/dialogflow-phones.webp" alt="Conversational dialogflow screens" />
           </motion.div>
 
           {/* Add to Cart */}
@@ -202,7 +202,7 @@ export const CaseStudyVoice = () => {
               Once items are displayed, the user can add them to the cart manually or ask the system to add them by voice. The user can also request different results or adjust the search using voice without leaving the conversation.
             </p>
             <FlowLabel>FLOW: Results displayed → User adds item (tap or voice) → Cart updates → Mic state confirms → Conversation continues.</FlowLabel>
-            <FullImage src="/case-study/voice/add-to-cart-phones.png" alt="Add to cart voice flow screens" />
+            <FullImage src="/case-study/voice/add-to-cart-phones.webp" alt="Add to cart voice flow screens" />
           </motion.div>
 
           {/* Review & Checkout */}
@@ -212,7 +212,7 @@ export const CaseStudyVoice = () => {
               After items are added users can review the cart, add more items or proceed to checkout.
             </p>
             <FlowLabel>FLOW: User view cart → Checkout or continue ordering → Order is submitted → Ask for user review</FlowLabel>
-            <FullImage src="/case-study/voice/checkout-phones.png" alt="Review and checkout screens" />
+            <FullImage src="/case-study/voice/checkout-phones.webp" alt="Review and checkout screens" />
           </motion.div>
 
           {/* Key Screens */}
@@ -251,7 +251,7 @@ export const CaseStudyVoice = () => {
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
                     <img
                       key={n}
-                      src={`/case-study/voice/key-screens/screen-${n}.png`}
+                      src={`/case-study/voice/key-screens/screen-${n}.webp`}
                       alt={`Voice to Cart key screen ${n}`}
                       className="block shrink-0 rounded-2xl"
                       style={{ height: 500, width: 256, objectFit: "cover" }}

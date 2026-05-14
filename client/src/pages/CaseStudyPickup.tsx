@@ -183,7 +183,7 @@ export const CaseStudyPickup = () => {
 
           {/* Hero cover — exact Figma export (3 phones on light background) */}
           <div className="mt-2">
-            <FullImage src="/case-study/pickup/hero-cover.png" alt="Pick-up map experience screens" />
+            <FullImage src="/case-study/pickup/hero-cover.webp" alt="Pick-up map experience screens" />
           </div>
         </motion.div>
       </div>
@@ -211,7 +211,7 @@ export const CaseStudyPickup = () => {
               text={`"By enhancing map experience, we can encourage regular pick-up use, improve customer satisfaction, and drive retention."`}
             />
             {/* Overview phones — exact Figma export */}
-            <FullImage src="/case-study/pickup/overview-phones.png" alt="Pick-up map overview screens" />
+            <FullImage src="/case-study/pickup/overview-phones.webp" alt="Pick-up map overview screens" />
           </motion.div>
 
           {/* My Role */}
@@ -221,7 +221,7 @@ export const CaseStudyPickup = () => {
               The pick-up map was intended to be the foundation of the competitive experience, but consistently underperformed due to poor usability, confirmed by competitor analysis and user feedback.
             </p>
             {/* Role diagram — exact Figma export */}
-            <FullImage src="/case-study/pickup/role-diagram.png" alt="My role process diagram" />
+            <FullImage src="/case-study/pickup/role-diagram.webp" alt="My role process diagram" />
           </motion.div>
 
           {/* Map Pin Improvements */}
@@ -232,7 +232,7 @@ export const CaseStudyPickup = () => {
               solution="I introduced a clearer visual hierarchy with distinct states (default, selected, grouped), added meaningful signals like vendor names and discounts, and grouped pins at lower zoom levels to reduce clutter."
             />
             {/* Before/After phones — exact Figma export */}
-            <FullImage src="/case-study/pickup/map-pin-cover.png" alt="Map pin improvements before and after" />
+            <FullImage src="/case-study/pickup/map-pin-cover.webp" alt="Map pin improvements before and after" />
           </motion.div>
 
           {/* Vendor Navigation */}
@@ -242,7 +242,7 @@ export const CaseStudyPickup = () => {
               problem="Map offers horizontal navigation only to explore vendor list, making it hard for users to browse and select vendors efficiently."
               solution="Introduced a vendor list view for quick scan to the map. Enabled a vertical → horizontal hybrid browsing pattern. Allowed users to switch between overview and fast selection."
             />
-            <FullImage src="/case-study/pickup/vendor-nav-cover.png" alt="Vendor navigation before and after" />
+            <FullImage src="/case-study/pickup/vendor-nav-cover.webp" alt="Vendor navigation before and after" />
           </motion.div>
 
           {/* Cleaner Map View */}
@@ -252,7 +252,7 @@ export const CaseStudyPickup = () => {
               problem="The map view is cluttered with overlapping pins and landmarks, causing high cognitive load that competed with vendors for attention."
               solution="Simplify the map view, remove unnecessary elements to reduce cognitive load and improve discovery."
             />
-            <FullImage src="/case-study/pickup/map-noise-cover.png" alt="Cleaner map view before and after" />
+            <FullImage src="/case-study/pickup/map-noise-cover.webp" alt="Cleaner map view before and after" />
           </motion.div>
 
           {/* Vendor Location Display */}
@@ -262,7 +262,7 @@ export const CaseStudyPickup = () => {
               problem={`Users struggle to find the "selected vendor" locations on the map, causing pickup and address issues.`}
               solution={`Reduced "where exactly is it?" anxiety by adding vendor location imagery/location up clearly for users.`}
             />
-            <FullImage src="/case-study/pickup/vendor-location-cover.png" alt="Vendor location display improvement" />
+            <FullImage src="/case-study/pickup/vendor-location-cover.webp" alt="Vendor location display improvement" />
           </motion.div>
 
           {/* Key Screens */}
@@ -311,7 +311,7 @@ export const CaseStudyPickup = () => {
                   {[1, 2, 3, 4, 5, 6].map((n) => (
                     <img
                       key={n}
-                      src={`/case-study/pickup/key-screen-${n}.png`}
+                      src={`/case-study/pickup/key-screen-${n}.webp`}
                       alt={`Key screen ${n}`}
                       className="block shrink-0 rounded-2xl"
                       style={{ height: 500, width: 310, objectFit: "cover", objectPosition: "center" }}
@@ -344,7 +344,7 @@ export const CaseStudyPickup = () => {
               text="Overall, users found the map intuitive and informative, though some favoured Google Maps for more detailed navigation and reviews."
             />
             {/* Prototype test phones with annotations — exact Figma export */}
-            <FullImage src="/case-study/pickup/prototype-test-cover.png" alt="Prototype test results" />
+            <FullImage src="/case-study/pickup/prototype-test-cover.webp" alt="Prototype test results" />
           </motion.div>
 
           {/* Preference Test */}
@@ -359,7 +359,7 @@ export const CaseStudyPickup = () => {
               text="Users preferred the new map design for its clarity, simplicity, and modern look, finding it easier to use and more familiar."
             />
             {/* Preference test phones with annotations — exact Figma export */}
-            <FullImage src="/case-study/pickup/preference-test-cover.png" alt="Preference test results" />
+            <FullImage src="/case-study/pickup/preference-test-cover.webp" alt="Preference test results" />
           </motion.div>
 
           {/* Success Metrics */}
@@ -386,7 +386,7 @@ export const CaseStudyPickup = () => {
           {/* Video */}
           <motion.div custom={11} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Project Video</SectionTitle>
-            <VideoPlayer src={PICKUP_VIDEO} poster="/case-study/pickup/video-mockup.png" />
+            <VideoPlayer src={PICKUP_VIDEO} poster="/case-study/pickup/video-mockup.webp" />
           </motion.div>
 
         </div>

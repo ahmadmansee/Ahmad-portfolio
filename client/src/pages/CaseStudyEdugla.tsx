@@ -7,6 +7,7 @@ import { CaseStudyNav } from "@/components/CaseStudyNav";
 import { PageMeta } from "@/components/PageMeta";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import eduglaLogo from "@assets/edugla_1778761182274.png";
 
 const EDUGLA_VIDEO = "https://drive.google.com/file/d/1fQfETPDUWSsQr2EobZ1PUNqDnp0KRAUC/preview";
 
@@ -88,7 +89,7 @@ export const CaseStudyEdugla = () => {
         >
           {/* Brand */}
           <div className="flex items-center gap-4">
-            <img loading="lazy" src="/case-study/edugla/edugla-logo.png" alt="Edugla" className="h-10 object-contain" />
+            <img loading="lazy" src={eduglaLogo} alt="Edugla" className="h-10 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">Edugla</span>
           </div>
 
@@ -113,7 +114,7 @@ export const CaseStudyEdugla = () => {
 
           {/* Hero cover — the brain UI inside the browser chrome */}
           <div className="w-full mt-2">
-            <FullImage src="/case-study/edugla/hero-cover.png" alt="Edugla Brain interface" />
+            <FullImage src="/case-study/edugla/hero-cover.webp" alt="Edugla Brain interface" />
           </div>
         </motion.div>
       </div>
@@ -147,7 +148,7 @@ export const CaseStudyEdugla = () => {
               text={`"Edugla's main strength is the ability to collect knowledge from worldwide contributors and present it in a "brain" graph to visualize subjects, learning materials and relationships.`}
             />
             {/* MacBook cover — properly framed export from Figma */}
-            <FullImage src="/case-study/edugla/macbook-cover.png" alt="Edugla MacBook interface" />
+            <FullImage src="/case-study/edugla/macbook-cover.webp" alt="Edugla MacBook interface" />
           </motion.div>
 
           {/* The Brain */}
@@ -158,7 +159,7 @@ export const CaseStudyEdugla = () => {
               solution="We introduced The Brain, a node-based knowledge map. Each node represents a topic that allows users to explore a connected network of topics."
             />
             {/* Brain UI — full browser frame export */}
-            <FullImage src="/case-study/edugla/brain-image.png" alt="The Brain knowledge graph" />
+            <FullImage src="/case-study/edugla/brain-image.webp" alt="The Brain knowledge graph" />
             <Quote label="Key highlights:">
               <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
                 <li>Node-based interactive knowledge map</li>
@@ -176,7 +177,7 @@ export const CaseStudyEdugla = () => {
               problem="Users are increasingly interacting with AI through conversation, asking questions, generating ideas, and making decisions based on responses. The Brain knowledge graph interface alone can feel limiting."
               solution="We integrated Lula, a conversational AI assistant within the Brain view. Instead of manually structuring topics, users can generate a personalized roadmap or select suggested prompts directly through chat."
             />
-            <FullImage src="/case-study/edugla/roadmap-image.png" alt="AI Roadmap Generator Lula" />
+            <FullImage src="/case-study/edugla/roadmap-image.webp" alt="AI Roadmap Generator Lula" />
             <Quote label="How it works:">
               <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
                 <li>A chat panel appears on the left side of the screen</li>
@@ -200,7 +201,7 @@ export const CaseStudyEdugla = () => {
                 "Continue the conversation with Lula for clarification or deeper exploration",
               ]}
             />
-            <FullImage src="/case-study/edugla/learning-image.png" alt="Learning Mode" />
+            <FullImage src="/case-study/edugla/learning-image.webp" alt="Learning Mode" />
             <Quote label="Key details:">
               <ul className="list-disc ml-5 space-y-1 font-['Inter_Tight',Helvetica] text-[#a5a5a5] text-base leading-relaxed">
                 <li>Roadmap sidebar shows modules and progress</li>
@@ -219,7 +220,7 @@ export const CaseStudyEdugla = () => {
               problem="During learning, users often come across important insights and related topics, which makes progress and tracking difficult over time."
               solution="Favourite feature allows users to capture important modules, content, or roadmaps and return to them later."
             />
-            <FullImage src="/case-study/edugla/favourite-image.png" alt="Favourite & Save" />
+            <FullImage src="/case-study/edugla/favourite-image.webp" alt="Favourite & Save" />
           </motion.div>
 
           {/* More Screens — Mockup grid */}
@@ -227,7 +228,7 @@ export const CaseStudyEdugla = () => {
             <SectionTitle>More Screens</SectionTitle>
             <div className="w-full rounded-3xl overflow-hidden">
               <img
-                src="/case-study/edugla/mockups-grid.png"
+                src="/case-study/edugla/mockups-grid.webp"
                 alt="Edugla additional screens"
                 className="w-full h-auto block"
               />

@@ -42,7 +42,7 @@ const toolboxItems = [
   { img: "/figmaAssets/cube-2d-dark-1.png", label: "Cursor" },
   { img: "/figmaAssets/image-76.png", label: "Claude" },
   { img: "/figmaAssets/image-2.png", label: "Jitter (Animation)" },
-  { img: "/figmaAssets/image-3.png", label: "Jira" },
+  { img: "/figmaAssets/image-3.webp", label: "Jira" },
 ];
 
 const fadeUp = {
@@ -93,7 +93,7 @@ export const About = () => {
               <img
                 className="w-full object-cover relative z-10"
                 alt="Ahmad Mansee"
-                src="/figmaAssets/mansee-tr-1-1.png"
+                src="/figmaAssets/mansee-tr-1-1.webp"
               />
             </div>
           </motion.div>

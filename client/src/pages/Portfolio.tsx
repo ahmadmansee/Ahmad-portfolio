@@ -64,7 +64,7 @@ const toolboxItems = [
     imgClass: "relative w-[79px] h-[79px] object-cover",
   },
   {
-    img: "/figmaAssets/image-3.png",
+    img: "/figmaAssets/image-3.webp",
     label: "Jira",
     imgClass: "relative w-[79px] h-[79px] object-cover",
   },
@@ -81,7 +81,7 @@ const projects = [
     isMockup: false,
   },
   {
-    img: "/figmaAssets/macbook-mockup-3-1.png",
+    img: "/figmaAssets/macbook-mockup-3-1.webp",
     imgAlt: "Macbook mockup",
     title: "Edugla AI",
     tags: ["AI platform", "EdTech"],
@@ -295,7 +295,7 @@ export const Portfolio = (): JSX.Element => {
                   <img
                     className="absolute left-[calc(50.00%_-_309px)] -bottom-24 w-[618px] h-[496px] object-cover"
                     alt="Macbook mockup"
-                    src="/figmaAssets/macbook-mockup-3-1.png"
+                    src="/figmaAssets/macbook-mockup-3-1.webp"
                   />
                 </div>
                 <div className="h-[71px] items-center justify-between self-stretch w-full flex">
@@ -378,7 +378,7 @@ export const Portfolio = (): JSX.Element => {
             <img
               className="w-[672px] h-[672px] mt-[-24.50px] mb-[-24.50px] ml-[-24.50px] mr-[-24.50px] object-cover"
               alt="Mansee tr"
-              src="/figmaAssets/mansee-tr-1-1.png"
+              src="/figmaAssets/mansee-tr-1-1.webp"
             />
           </div>
         </div>
@@ -565,7 +565,7 @@ export const Portfolio = (): JSX.Element => {
             <img
               className="w-[647.5px] h-[672px] mt-[-26.50px] mb-[-26.50px] mr-[-24.50px] object-cover"
               alt="Mansee tr"
-              src="/figmaAssets/mansee-tr-1-1.png"
+              src="/figmaAssets/mansee-tr-1-1.webp"
             />
           </div>
         </div>
@@ -750,19 +750,19 @@ export const Portfolio = (): JSX.Element => {
       <img
         className="mt-[1395px] w-[1440px] min-w-[1440px] h-[12495px] ml-[239px]"
         alt="Pick up"
-        src="/figmaAssets/pick-up.png"
+        src="/figmaAssets/pick-up.webp"
       />
 
       <img
         className="mt-[1395px] w-[1440px] min-w-[1440px] h-[11162px] ml-[186px]"
         alt="Edugla"
-        src="/figmaAssets/edugla.png"
+        src="/figmaAssets/edugla.webp"
       />
 
       <img
         className="mt-[1395px] w-[1440px] min-w-[1440px] h-[11165px] ml-[185px]"
         alt="Voice to cart"
-        src="/figmaAssets/voice-to-cart.png"
+        src="/figmaAssets/voice-to-cart.webp"
       />
     </div>
   );

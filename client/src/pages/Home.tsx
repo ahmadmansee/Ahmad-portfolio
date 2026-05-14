@@ -17,7 +17,7 @@ const projects = [
   },
   {
     id: "edugla",
-    img: "/figmaAssets/macbook-mockup-3-1.png",
+    img: "/figmaAssets/macbook-mockup-3-1.webp",
     imgAlt: "Edugla AI",
     title: "Edugla AI",
     tags: ["AI platform", "EdTech"],
@@ -158,7 +158,7 @@ export const Home = () => {
             <img
               className="w-full h-full object-cover"
               alt="Ahmad Mansee"
-              src="/figmaAssets/mansee-tr-1-1.png"
+              src="/figmaAssets/mansee-tr-1-1.webp"
             />
           </motion.div>
         </div>
