@@ -7,7 +7,6 @@ import { CaseStudyNav } from "@/components/CaseStudyNav";
 import { PageMeta } from "@/components/PageMeta";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import eduglaLogo from "@assets/edugla_1778761182274.png";
 
 const EDUGLA_VIDEO = "https://drive.google.com/file/d/1fQfETPDUWSsQr2EobZ1PUNqDnp0KRAUC/preview";
 
@@ -89,7 +88,7 @@ export const CaseStudyEdugla = () => {
         >
           {/* Brand */}
           <div className="flex items-center gap-4">
-            <img loading="lazy" src={eduglaLogo} alt="Edugla" className="h-10 object-contain" />
+            <img loading="lazy" src="/figmaAssets/edugla-case-study-logo.png" alt="Edugla" className="h-10 object-contain" />
             <span className="font-['Inter_Tight',Helvetica] font-medium text-white text-xl md:text-[28px] tracking-wider">Edugla</span>
           </div>
 
@@ -228,6 +227,7 @@ export const CaseStudyEdugla = () => {
             <SectionTitle>More Screens</SectionTitle>
             <div className="w-full rounded-3xl overflow-hidden">
               <img
+                loading="lazy"
                 src="/case-study/edugla/mockups-grid.webp"
                 alt="Edugla additional screens"
                 className="w-full h-auto block"

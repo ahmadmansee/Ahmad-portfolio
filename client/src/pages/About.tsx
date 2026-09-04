@@ -6,7 +6,7 @@ import { PageMeta } from "@/components/PageMeta";
 
 const experiences = [
   {
-    title: "Principle product designer (Contractor) - Jahez group",
+    title: "Principal Product Designer (Contractor) · Jahez Group",
     location: "Riyadh, Saudi Arabia",
     locationExtra: "Remote",
     period: "May 2025 - Present",
@@ -87,7 +87,7 @@ export const About = () => {
             <div className="relative overflow-hidden rounded-2xl">
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
                 <span className="font-['Be_Vietnam_Pro',Helvetica] font-semibold text-white opacity-[0.08] text-[clamp(60px,12vw,180px)] tracking-[-0.04em] whitespace-nowrap leading-none">
-                  Ahmed
+                  Ahmad
                 </span>
               </div>
               <img
@@ -238,6 +238,7 @@ export const About = () => {
                 className="flex flex-col h-[200px] md:h-[250px] justify-center gap-6 md:gap-[30px] px-4 md:px-[72px] py-9 items-center"
               >
                 <img
+                  loading="lazy"
                   className="w-16 h-16 md:w-20 md:h-20 object-contain"
                   alt={tool.label}
                   src={tool.img}

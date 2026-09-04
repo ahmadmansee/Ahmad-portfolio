@@ -29,6 +29,7 @@ const VideoPlayer = ({ src, poster }: { src: string; poster: string }) => {
       ) : (
         <div className="relative w-full h-full cursor-pointer group" onClick={() => setPlaying(true)}>
           <img
+            loading="lazy"
             src={poster}
             alt="Pick-Up Map Experience preview"
             className="w-full h-full object-cover"
@@ -310,6 +311,7 @@ export const CaseStudyPickup = () => {
                 <div className="flex items-start" style={{ width: "max-content", gap: 12 }}>
                   {[1, 2, 3, 4, 5, 6].map((n) => (
                     <img
+                      loading="lazy"
                       key={n}
                       src={`/case-study/pickup/key-screen-${n}.webp`}
                       alt={`Key screen ${n}`}

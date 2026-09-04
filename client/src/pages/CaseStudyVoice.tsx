@@ -250,6 +250,7 @@ export const CaseStudyVoice = () => {
                 <div className="flex items-start" style={{ width: "max-content", gap: "20px" }}>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
                     <img
+                      loading="lazy"
                       key={n}
                       src={`/case-study/voice/key-screens/screen-${n}.webp`}
                       alt={`Voice to Cart key screen ${n}`}

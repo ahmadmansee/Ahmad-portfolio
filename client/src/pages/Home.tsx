@@ -9,9 +9,11 @@ const projects = [
   {
     id: "pickup",
     img: "/figmaAssets/thubnail.svg",
-    imgAlt: "Map pick up experience",
-    title: "Map pick up experience",
+    imgAlt: "Map Pick-Up Experience",
+    title: "Map Pick-Up Experience",
     tags: ["Visual Design", "Website Development"],
+    outcome:
+      "Turned a cluttered pick-up map into a calmer experience that made restaurant discovery and selection easier.",
     bg: "bg-transparent",
     href: "/case-study/pickup",
   },
@@ -21,6 +23,8 @@ const projects = [
     imgAlt: "Edugla AI",
     title: "Edugla AI",
     tags: ["AI platform", "EdTech"],
+    outcome:
+      "Connected knowledge maps, AI roadmaps, and mixed-format content in one personalized learning experience.",
     bg: "bg-[#d9d9d9]",
     href: "/case-study/edugla",
   },
@@ -30,6 +34,8 @@ const projects = [
     imgAlt: "Voice to Cart",
     title: "Voice to Cart",
     tags: ["Conversation design", "Voice assistant"],
+    outcome:
+      "Designed a guided voice journey that moves users from discovery to checkout with fewer manual steps.",
     bg: "bg-transparent",
     href: "/case-study/voice",
   },
@@ -77,9 +83,10 @@ const ProjectCard = ({
           className={`w-full aspect-[618/496] ${project.bg} rounded-2xl overflow-hidden relative`}
         >
           <img
+            loading="lazy"
             src={project.img}
             alt={project.imgAlt}
-            className={`w-full h-full transition-transform duration-500 group-hover:scale-[1.03] ${
+            className={`w-full h-full transition-transform duration-300 group-hover:scale-[1.03] ${
               project.id === "edugla"
                 ? "object-cover object-top"
                 : "object-cover"
@@ -109,6 +116,9 @@ const ProjectCard = ({
             </span>
           ))}
         </div>
+        <p className="max-w-[520px] font-['Inter_Tight',Helvetica] font-normal text-[#c7c7ca] text-base leading-[1.6]">
+          {project.outcome}
+        </p>
       </div>
       <Link href={project.href}>
         <div className="flex w-12 h-12 bg-[#fcfcfc] border border-[#0e0e11] items-center justify-center rounded-3xl overflow-hidden cursor-pointer hover:bg-white/90 transition-colors flex-shrink-0">
@@ -136,7 +146,7 @@ export const Home = () => {
           aria-hidden
         >
           <span className="font-['Be_Vietnam_Pro',Helvetica] font-semibold text-white opacity-[0.06] text-[clamp(80px,18vw,280px)] tracking-[-0.04em] whitespace-nowrap leading-none">
-            Ahmed Mansee
+            Ahmad Mansee
           </span>
         </div>
 
@@ -172,21 +182,14 @@ export const Home = () => {
         >
           <div className="flex flex-col items-center gap-6 max-w-4xl w-full">
             <AvailableBadge />
-            <p className="font-['Inter_Tight',Helvetica] font-medium text-white text-3xl md:text-5xl lg:text-6xl leading-tight opacity-80">
-              Hi{" "}
-              <motion.span
-                className="inline-block origin-[70%_70%]"
-                animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
-                transition={{ duration: 1.6, repeat: Infinity, repeatDelay: 2.4, ease: "easeInOut" }}
-              >
-                👋
-              </motion.span>
-              , I'm Ahmad, a multidisciplinary designer focused on AI-driven
-              digital products.
-            </p>
+            <h1 className="font-['Inter_Tight',Helvetica] font-medium text-white text-3xl md:text-5xl lg:text-6xl leading-tight opacity-80">
+              Principal Product Designer creating clear, human experiences for
+              AI-powered products.
+            </h1>
             <p className="font-['Inter_Tight',Helvetica] font-normal text-[#b8b8b8] text-base md:text-lg leading-relaxed">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#cf3570] mr-2 align-middle" />
-              Currently designing principal product experiences at Jahez Group
+              10+ years designing mobile and web products across Jahez,
+              Delivery Hero, FlixBus, and Home24.
             </p>
           </div>
           <motion.a
@@ -209,6 +212,7 @@ export const Home = () => {
       {/* Logos Bar */}
       <div className="w-full overflow-hidden">
         <img
+          loading="lazy"
           src="/figmaAssets/logos.svg"
           alt="Client logos"
           className="w-full h-auto object-contain"
