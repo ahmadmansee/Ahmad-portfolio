@@ -31,12 +31,6 @@ export const initializeAnalytics = () => {
   document.head.appendChild(script);
 
   window.gtag("js", new Date());
-  window.gtag("consent", "update", {
-    analytics_storage: "granted",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-  });
   window.gtag("config", GA_MEASUREMENT_ID);
 };
 
