@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route } from "wouter";
 import { ScrollRestoration } from "@/components/ScrollRestoration";
-import { CustomCursor } from "@/components/CustomCursor";
 
 const Home = lazy(() => import("@/pages/Home").then((module) => ({ default: module.Home })));
 const About = lazy(() => import("@/pages/About").then((module) => ({ default: module.About })));
@@ -35,7 +34,6 @@ function App() {
   return (
     <>
       <ScrollRestoration />
-      <CustomCursor />
       <Router />
     </>
   );
