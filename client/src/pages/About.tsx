@@ -107,14 +107,14 @@ export const About = () => {
           >
             <AvailableBadge />
             <h1 className="font-['Inter_Tight',Helvetica] font-semibold text-white text-3xl md:text-[42px] leading-tight">
-              Hi, I'm Ahmad, a multidisciplinary designer focused on AI-driven
-              digital products.
+              Hi, I'm Ahmad, a Principal Product Designer creating clear,
+              human experiences for AI-powered products.
             </h1>
             <p className="font-['Inter_Tight',Helvetica] font-normal text-white text-lg md:text-xl leading-8">
-              A product designer, VUI designer, and UI/UX mentor currently
-              splitting time between Riyadh and Berlin, with roots in Amman,
-              Jordan. My passion lies in creating digital products that meet
-              human needs while elevating aesthetics.
+              I have 10+ years of experience designing mobile and web products
+              across Jahez, Delivery Hero, FlixBus, and Home24. I currently
+              split my time between Riyadh and Berlin, with roots in Amman,
+              Jordan.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Button
