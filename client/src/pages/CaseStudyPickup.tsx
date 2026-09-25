@@ -316,9 +316,9 @@ export const CaseStudyPickup = () => {
             </div>
 
             {/* Horizontally draggable phone carousel */}
-            <div className="bg-[#111] rounded-3xl px-2 py-5">
+            <div className="bg-[#111] rounded-3xl px-5 py-5">
               <DragCarousel>
-                <div className="flex items-start" style={{ width: "max-content", gap: 0 }}>
+                <div className="flex items-start" style={{ width: "max-content", gap: 12 }}>
                   {[1, 2, 3, 4, 5, 6].map((n) => (
                     <img
                       loading="lazy"
@@ -326,7 +326,7 @@ export const CaseStudyPickup = () => {
                       src={`/case-study/pickup/key-screen-${n}.webp`}
                       alt={`Key screen ${n}`}
                       className="block shrink-0 rounded-2xl"
-                      style={{ height: 500, width: 280, objectFit: "cover", objectPosition: "left center" }}
+                      style={{ height: 500, width: 310, objectFit: "cover", objectPosition: "center" }}
                       draggable={false}
                     />
                   ))}
