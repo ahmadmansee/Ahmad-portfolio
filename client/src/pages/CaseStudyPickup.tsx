@@ -207,7 +207,7 @@ export const CaseStudyPickup = () => {
           <motion.div custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-4">
             <SectionTitle>Project Overview</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              As delivery fees increased, pick-up became a critical lower-cost alternative. Data and user feedback showed that the existing map limited discovery and confidence, so I redesigned it to support usage and retention.
+              As delivery fees increased, pick-up became a critical, lower-cost growth alternative. However, the existing map experience failed to support discovery and confidence, according to data and qualitative feedback. This project focused on making the pick-up map a viable driver of usage and retention.
             </p>
           </motion.div>
 
@@ -316,9 +316,9 @@ export const CaseStudyPickup = () => {
             </div>
 
             {/* Horizontally draggable phone carousel */}
-            <div className="bg-[#111] rounded-3xl px-5 py-5">
+            <div className="bg-[#111] rounded-3xl px-3 py-5">
               <DragCarousel>
-                <div className="flex items-start" style={{ width: "max-content", gap: 12 }}>
+                <div className="flex items-start" style={{ width: "max-content", gap: 4 }}>
                   {[1, 2, 3, 4, 5, 6].map((n) => (
                     <img
                       loading="lazy"
@@ -326,7 +326,7 @@ export const CaseStudyPickup = () => {
                       src={`/case-study/pickup/key-screen-${n}.webp`}
                       alt={`Key screen ${n}`}
                       className="block shrink-0 rounded-2xl"
-                      style={{ height: 500, width: 310, objectFit: "cover", objectPosition: "center" }}
+                      style={{ height: 500, width: 290, objectFit: "cover", objectPosition: "center" }}
                       draggable={false}
                     />
                   ))}
@@ -378,22 +378,47 @@ export const CaseStudyPickup = () => {
 
           {/* Success Metrics */}
           <motion.div custom={10} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Usability Test Results & Takeaways</SectionTitle>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex flex-col gap-2">
+              <SectionTitle>Success Metrics & Final Thoughts</SectionTitle>
+              <p className="font-['Inter_Tight',Helvetica] text-[#95989c] text-sm md:text-base">
+                Prototype validation with 10 participants
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { emoji: "🗺️", id: "info-clarity", stat: "90%", label: "said the map pins clearly communicated discounts and ratings" },
-                { emoji: "🧭", id: "nav-ease", stat: "80%", label: "found it easy to switch between horizontal and vertical views and explore restaurants" },
-                { emoji: "✅", id: "preference", stat: "80%", label: "preferred the redesigned map for its clarity and modern appearance" },
-                { emoji: "💬", id: "quote", stat: "\"The selected 3D house pin stood out clearly from others\"", label: "Usability test participant" },
-                { emoji: "🎨", id: "feel", stat: "Calmer & Familiar", label: "Participants described the new design as less noisy and similar to Google Maps" },
-                { emoji: "🚀", id: "takeaway", stat: "Key Takeaway", label: "The redesigned pins and layout improved discoverability and user confidence during testing" },
-              ].map(({ emoji, id, stat, label }) => (
-                <div key={id} className="bg-[#2B2D33] rounded-2xl p-5 flex flex-col gap-2">
-                  <span className="text-2xl">{emoji}</span>
-                  <span className="font-['Inter_Tight',Helvetica] font-bold text-white text-lg leading-snug">{stat}</span>
-                  <span className="font-['Inter_Tight',Helvetica] text-[#b8b8b8] text-sm leading-relaxed">{label}</span>
+                { id: "info-clarity", stat: "90%", label: "said the pins clearly communicated discounts and ratings" },
+                { id: "nav-ease", stat: "80%", label: "found it easy to switch views and explore restaurants" },
+                { id: "preference", stat: "80%", label: "preferred the redesigned map over the existing version" },
+              ].map(({ id, stat, label }) => (
+                <div key={id} className="bg-[#16171b] border border-white/10 rounded-2xl p-6 flex flex-col gap-3">
+                  <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-4xl md:text-5xl leading-none">{stat}</span>
+                  <span className="font-['Inter_Tight',Helvetica] text-[#d0d0d0] text-sm md:text-base leading-relaxed">{label}</span>
                 </div>
               ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-[#16171b] border border-white/10 rounded-2xl p-6 flex flex-col gap-4">
+                <span className="font-['Inter_Tight',Helvetica] font-semibold text-white text-lg">Business metrics after launch</span>
+                <ul className="font-['Inter_Tight',Helvetica] text-[#b8b8b8] text-sm md:text-base leading-relaxed space-y-2 list-disc pl-5">
+                  <li>Pick-up map engagement</li>
+                  <li>Restaurant selection and cart conversion</li>
+                  <li>Repeat pick-up usage</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#2B2D33] border border-white/10 rounded-2xl p-6 flex flex-col justify-between gap-5">
+                <div className="flex flex-col gap-2">
+                  <span className="font-['Inter_Tight',Helvetica] font-semibold text-white text-lg">Final thought</span>
+                  <p className="font-['Inter_Tight',Helvetica] text-[#d0d0d0] text-sm md:text-base leading-relaxed">
+                    The redesigned map made restaurant discovery clearer during testing. The next step is measuring whether that clarity leads to more completed and repeated pick-up orders after launch.
+                  </p>
+                </div>
+                <p className="font-['Inter_Tight',Helvetica] text-[#95989c] text-sm italic leading-relaxed">
+                  “The selected 3D house pin stood out clearly from others.” — Usability test participant
+                </p>
+              </div>
             </div>
           </motion.div>
 
