@@ -381,44 +381,29 @@ export const CaseStudyPickup = () => {
             <div className="flex flex-col gap-2">
               <SectionTitle>Success Metrics & Final Thoughts</SectionTitle>
               <p className="font-['Inter_Tight',Helvetica] text-[#95989c] text-sm md:text-base">
-                Prototype validation with 10 participants
+                Business measures for evaluating impact after launch
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { id: "info-clarity", stat: "90%", label: "said the pins clearly communicated discounts and ratings" },
-                { id: "nav-ease", stat: "80%", label: "found it easy to switch views and explore restaurants" },
-                { id: "preference", stat: "80%", label: "preferred the redesigned map over the existing version" },
-              ].map(({ id, stat, label }) => (
+                { id: "discovery", number: "01", title: "Map engagement", label: "More customers explore nearby restaurants through the pick-up map" },
+                { id: "conversion", number: "02", title: "Map-to-cart conversion", label: "More map sessions lead to a restaurant selection and an item added to cart" },
+                { id: "retention", number: "03", title: "Repeat pick-up usage", label: "More customers return to pick-up after completing their first order" },
+              ].map(({ id, number, title, label }) => (
                 <div key={id} className="bg-[#16171b] border border-white/10 rounded-2xl p-6 flex flex-col gap-3">
-                  <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-4xl md:text-5xl leading-none">{stat}</span>
+                  <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-sm tracking-[0.18em]">{number}</span>
+                  <span className="font-['Inter_Tight',Helvetica] font-semibold text-white text-lg md:text-xl leading-snug">{title}</span>
                   <span className="font-['Inter_Tight',Helvetica] text-[#d0d0d0] text-sm md:text-base leading-relaxed">{label}</span>
                 </div>
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-[#16171b] border border-white/10 rounded-2xl p-6 flex flex-col gap-4">
-                <span className="font-['Inter_Tight',Helvetica] font-semibold text-white text-lg">Business metrics after launch</span>
-                <ul className="font-['Inter_Tight',Helvetica] text-[#b8b8b8] text-sm md:text-base leading-relaxed space-y-2 list-disc pl-5">
-                  <li>Pick-up map engagement</li>
-                  <li>Restaurant selection and cart conversion</li>
-                  <li>Repeat pick-up usage</li>
-                </ul>
-              </div>
-
-              <div className="bg-[#2B2D33] border border-white/10 rounded-2xl p-6 flex flex-col justify-between gap-5">
-                <div className="flex flex-col gap-2">
-                  <span className="font-['Inter_Tight',Helvetica] font-semibold text-white text-lg">Final thought</span>
-                  <p className="font-['Inter_Tight',Helvetica] text-[#d0d0d0] text-sm md:text-base leading-relaxed">
-                    The redesigned map made restaurant discovery clearer during testing. The next step is measuring whether that clarity leads to more completed and repeated pick-up orders after launch.
-                  </p>
-                </div>
-                <p className="font-['Inter_Tight',Helvetica] text-[#95989c] text-sm italic leading-relaxed">
-                  “The selected 3D house pin stood out clearly from others.” — Usability test participant
-                </p>
-              </div>
+            <div className="bg-[#2B2D33] border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-12">
+              <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-sm uppercase tracking-[0.16em] shrink-0">Key takeaway</span>
+              <p className="font-['Inter_Tight',Helvetica] text-white text-lg md:text-2xl leading-relaxed max-w-[760px]">
+                A successful pick-up map should do more than show locations. It should make restaurants easier to compare and move customers confidently from discovery to order.
+              </p>
             </div>
           </motion.div>
 
