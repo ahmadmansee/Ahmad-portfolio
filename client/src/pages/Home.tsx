@@ -133,8 +133,8 @@ export const Home = () => {
   return (
     <div className="bg-black min-h-screen w-full">
       <PageMeta
-        title="Ahmad Mansee — Product & UX Designer"
-        description="Multidisciplinary designer focused on AI-driven digital products. See my work across mobile, web, and AI experiences."
+        title="Ahmad Mansee — Principal Product Designer"
+        description="Principal Product Designer with 10+ years of experience creating clear, human experiences for mobile, web, and AI-powered products."
       />
       <Navbar />
 

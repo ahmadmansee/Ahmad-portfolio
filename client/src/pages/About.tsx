@@ -70,7 +70,7 @@ export const About = () => {
     <div className="bg-black min-h-screen w-full">
       <PageMeta
         title="About — Ahmad Mansee"
-        description="Multidisciplinary product designer with 10+ years across DeliveryHero, FlixMobility, Home24, and now Jahez Group. Berlin-based, working remotely worldwide."
+        description="Principal Product Designer with 10+ years across Jahez, Delivery Hero, FlixBus, and Home24, focused on mobile, web, and AI-powered products."
       />
       <Navbar />
 

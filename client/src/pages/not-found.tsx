@@ -8,7 +8,7 @@ import { PageMeta } from "@/components/PageMeta";
 export default function NotFound() {
   return (
     <div className="bg-black min-h-screen w-full flex flex-col">
-      <PageMeta title="404 — Page not found | Ahmad Mansee" description="Looks like that page took a wrong turn." />
+      <PageMeta title="404 — Page not found | Ahmad Mansee" description="Looks like that page took a wrong turn." noIndex />
       <Navbar />
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-20 text-center">
         <motion.div

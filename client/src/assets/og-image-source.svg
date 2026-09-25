@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#080808"/>
+  <circle cx="1080" cy="-20" r="310" fill="url(#glow)" opacity="0.55"/>
+  <rect x="72" y="64" width="72" height="72" rx="22" fill="#CF3570"/>
+  <path d="M95 100C95 86.745 105.745 76 119 76H139L124 91H117C112.029 91 108 95.029 108 100C108 104.971 112.029 109 117 109H124L139 124H119C105.745 124 95 113.255 95 100Z" fill="white"/>
+  <text x="72" y="238" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700">Ahmad Mansee</text>
+  <text x="72" y="310" fill="#CF3570" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="600">Principal Product Designer</text>
+  <text x="72" y="398" fill="#D0D0D0" font-family="Arial, Helvetica, sans-serif" font-size="30">Creating clear, human experiences for</text>
+  <text x="72" y="440" fill="#D0D0D0" font-family="Arial, Helvetica, sans-serif" font-size="30">mobile, web, and AI-powered products.</text>
+  <line x1="72" y1="506" x2="1128" y2="506" stroke="#292929" stroke-width="2"/>
+  <text x="72" y="566" fill="#969696" font-family="Arial, Helvetica, sans-serif" font-size="25">10+ years · Jahez · Delivery Hero · FlixBus · Home24</text>
+  <text x="1128" y="566" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="600" text-anchor="end">amansee.com</text>
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1080 -20) rotate(90) scale(310)">
+      <stop stop-color="#CF3570" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#CF3570" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
