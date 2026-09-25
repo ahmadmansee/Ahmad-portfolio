@@ -4,6 +4,7 @@ import { Download } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageMeta } from "@/components/PageMeta";
+import { trackEvent } from "@/lib/analytics";
 
 const projects = [
   {
@@ -77,7 +78,7 @@ const ProjectCard = ({
     viewport={{ once: true, margin: "-80px" }}
     className="flex flex-col items-end gap-8 w-full"
   >
-    <Link href={project.href}>
+    <Link href={project.href} onClick={() => trackEvent("project_view", { project: project.id, source: "homepage" })}>
       <div className="w-full cursor-pointer group overflow-hidden rounded-2xl">
         <div
           className={`w-full aspect-[618/496] ${project.bg} rounded-2xl overflow-hidden relative`}
@@ -197,6 +198,7 @@ export const Home = () => {
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 18 }}
             href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing"
+            onClick={() => trackEvent("cv_download_click", { location: "homepage" })}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-white text-white font-['Be_Vietnam_Pro',Helvetica] font-medium text-base leading-none px-5 py-3 rounded-full hover:bg-white hover:text-black transition-colors"

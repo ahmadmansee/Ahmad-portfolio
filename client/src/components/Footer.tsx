@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const contactInfo = [
   { label: "Phone:", value: "+4917636067590" },
@@ -23,6 +24,7 @@ export const Footer = ({ linkedinSrc }: { linkedinSrc?: string }) => (
               </span>
               <a
                 href={info.label === "Mail:" ? `mailto:${info.value}` : `tel:${info.value}`}
+                onClick={() => trackEvent("contact_click", { method: info.label === "Mail:" ? "email" : "phone", location: "footer" })}
                 className="font-['Inter_Tight',Helvetica] font-normal text-white text-xl md:text-2xl leading-normal underline hover:text-white/80 transition-colors"
                 data-testid={info.label === "Mail:" ? "link-footer-email" : "link-footer-phone"}
               >
@@ -37,6 +39,7 @@ export const Footer = ({ linkedinSrc }: { linkedinSrc?: string }) => (
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 18 }}
             href={CV_URL}
+            onClick={() => trackEvent("cv_download_click", { location: "footer" })}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-[#0e0e11] rounded-full px-5 py-3 font-['Inter_Tight',Helvetica] font-semibold text-base leading-none hover:bg-white/90 transition-colors shadow-sm"
@@ -51,6 +54,7 @@ export const Footer = ({ linkedinSrc }: { linkedinSrc?: string }) => (
             whileTap={{ scale: 0.94 }}
             transition={{ type: "spring", stiffness: 400, damping: 14 }}
             href="https://www.linkedin.com/in/ahmadmansee/"
+            onClick={() => trackEvent("linkedin_click", { location: "footer" })}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"

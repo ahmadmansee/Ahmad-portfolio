@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { PageMeta } from "@/components/PageMeta";
+import { trackEvent } from "@/lib/analytics";
 
 const experiences = [
   {
@@ -124,6 +125,7 @@ export const About = () => {
               >
                 <a
                   href="mailto:ahmad.mansee@gmail.com"
+                  onClick={() => trackEvent("contact_click", { method: "email", location: "about" })}
                   data-cursor-text="Drop me a line"
                   data-testid="button-contact-about"
                 >
@@ -142,6 +144,7 @@ export const About = () => {
               >
                 <a
                   href="https://drive.google.com/file/d/1H-LutKCWCjBtDySnZGO5wlKe6X9yKGYI/view?usp=sharing"
+                  onClick={() => trackEvent("cv_download_click", { location: "about" })}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-text="Let's work together"

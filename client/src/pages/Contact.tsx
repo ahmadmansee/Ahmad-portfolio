@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageMeta } from "@/components/PageMeta";
+import { trackEvent } from "@/lib/analytics";
 
 export const Contact = () => {
   return (
@@ -31,6 +32,7 @@ export const Contact = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               href="tel:+4917636067590"
+              onClick={() => trackEvent("contact_click", { method: "phone", location: "contact_page" })}
               className="flex flex-col items-center sm:items-start gap-1"
             >
               <span className="font-['Inter_Tight',Helvetica] font-normal text-[#95989c] text-lg md:text-xl">
@@ -45,6 +47,7 @@ export const Contact = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               href="mailto:ahmad.mansee@gmail.com"
+              onClick={() => trackEvent("contact_click", { method: "email", location: "contact_page" })}
               className="flex flex-col items-center sm:items-start gap-1"
             >
               <span className="font-['Inter_Tight',Helvetica] font-normal text-[#95989c] text-lg md:text-xl">
