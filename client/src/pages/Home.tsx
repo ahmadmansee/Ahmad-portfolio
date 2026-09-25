@@ -8,7 +8,7 @@ import { PageMeta } from "@/components/PageMeta";
 const projects = [
   {
     id: "pickup",
-    img: "/figmaAssets/thubnail.svg",
+    img: "/figmaAssets/thubnail.webp",
     imgAlt: "Map Pick-Up Experience",
     title: "Map Pick-Up Experience",
     tags: ["Visual Design", "Website Development"],
@@ -30,7 +30,7 @@ const projects = [
   },
   {
     id: "voice",
-    img: "/figmaAssets/thubnail-1.svg",
+    img: "/figmaAssets/thubnail-1.webp",
     imgAlt: "Voice to Cart",
     title: "Voice to Cart",
     tags: ["Conversation design", "Voice assistant"],
@@ -213,7 +213,7 @@ export const Home = () => {
       <div className="w-full overflow-hidden">
         <img
           loading="lazy"
-          src="/figmaAssets/logos.svg"
+          src="/figmaAssets/logos.webp"
           alt="Client logos"
           className="w-full h-auto object-contain"
         />
