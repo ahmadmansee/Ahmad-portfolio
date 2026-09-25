@@ -402,7 +402,7 @@ export const CaseStudyPickup = () => {
             <div className="bg-[#2B2D33] border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-4 md:gap-12">
               <span className="font-['Inter_Tight',Helvetica] font-semibold text-[#cf3570] text-sm uppercase tracking-[0.16em] shrink-0">Key takeaway</span>
               <p className="font-['Inter_Tight',Helvetica] text-white text-lg md:text-2xl leading-relaxed max-w-[760px]">
-                A successful pick-up map should do more than show locations. It should make restaurants easier to compare and move customers confidently from discovery to order.
+                Running several research activities with a remote team made insights difficult to track. A shared research directory and consistent documentation helped everyone find results, understand decisions and stay aligned.
               </p>
             </div>
           </motion.div>
