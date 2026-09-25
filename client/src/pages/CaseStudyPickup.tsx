@@ -378,12 +378,7 @@ export const CaseStudyPickup = () => {
 
           {/* Success Metrics */}
           <motion.div custom={10} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <SectionTitle>Success Metrics & Final Thoughts</SectionTitle>
-              <p className="font-['Inter_Tight',Helvetica] text-[#95989c] text-sm md:text-base">
-                Estimated business impact after launch
-              </p>
-            </div>
+            <SectionTitle>Success Metrics & Final Thoughts</SectionTitle>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
