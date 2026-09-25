@@ -68,14 +68,24 @@ const Quote = ({ label, text, children }: { label: string; text?: string; childr
   </div>
 );
 
-const ProblemSolution = ({ problem, solution }: { problem: string; solution: string }) => (
+const ProblemSolution = ({
+  problem,
+  solution,
+  problemLabel = "Problem",
+  solutionLabel = "Solution",
+}: {
+  problem: string;
+  solution: string;
+  problemLabel?: string;
+  solutionLabel?: string;
+}) => (
   <div className="grid md:grid-cols-2 gap-6 md:gap-10">
     <div className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed">
-      <span className="font-bold uppercase block mb-1">Problem:</span>
+      <span className="font-bold uppercase block mb-1">{problemLabel}:</span>
       {problem}
     </div>
     <div className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed">
-      <span className="font-bold uppercase block mb-1">Solution:</span>
+      <span className="font-bold uppercase block mb-1">{solutionLabel}:</span>
       {solution}
     </div>
   </div>
@@ -197,7 +207,7 @@ export const CaseStudyPickup = () => {
           <motion.div custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-4">
             <SectionTitle>Project Overview</SectionTitle>
             <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
-              As delivery fees increased, pick-up became a critical, lower-cost growth alternative. However, the existing map experience failed to support discovery and confidence, according to data and qualitative feedback. This project focused on making the pick-up map a viable driver of usage and retention.
+              As delivery fees increased, pick-up became a critical lower-cost alternative. Data and user feedback showed that the existing map limited discovery and confidence, so I redesigned it to support usage and retention.
             </p>
           </motion.div>
 
@@ -218,8 +228,8 @@ export const CaseStudyPickup = () => {
           {/* My Role */}
           <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>My Role</SectionTitle>
-            <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[500px]">
-              The pick-up map was intended to be the foundation of the competitive experience, but consistently underperformed due to poor usability, confirmed by competitor analysis and user feedback.
+            <p className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[750px]">
+              I worked across the full process, from research and design exploration through usability testing, final design, and implementation.
             </p>
             {/* Role diagram — exact Figma export */}
             <FullImage src="/case-study/pickup/role-diagram.webp" alt="My role process diagram" />
@@ -230,7 +240,7 @@ export const CaseStudyPickup = () => {
             <SectionTitle>Map Pin Improvements</SectionTitle>
             <ProblemSolution
               problem="Pins looked visually similar and offered little useful information, increasing cognitive load and slowing decision-making."
-              solution="I introduced a clearer visual hierarchy with distinct states (default, selected, grouped), added meaningful signals like vendor names and discounts, and grouped pins at lower zoom levels to reduce clutter."
+              solution="I created distinct states for default, selected, and grouped pins, added vendor names and discounts, and grouped pins at lower zoom levels to reduce clutter."
             />
             {/* Before/After phones — exact Figma export */}
             <FullImage src="/case-study/pickup/map-pin-cover.webp" alt="Map pin improvements before and after" />
@@ -240,8 +250,8 @@ export const CaseStudyPickup = () => {
           <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Vendor Navigation on Map</SectionTitle>
             <ProblemSolution
-              problem="Map offers horizontal navigation only to explore vendor list, making it hard for users to browse and select vendors efficiently."
-              solution="Introduced a vendor list view for quick scan to the map. Enabled a vertical → horizontal hybrid browsing pattern. Allowed users to switch between overview and fast selection."
+              problem="The map only supported horizontal browsing, making it slow and difficult to scan a larger list of restaurants."
+              solution="I added a vertical list for faster browsing while keeping horizontal cards on the map, allowing users to switch between an overview and quick selection."
             />
             <FullImage src="/case-study/pickup/vendor-nav-cover.webp" alt="Vendor navigation before and after" />
           </motion.div>
@@ -251,7 +261,7 @@ export const CaseStudyPickup = () => {
             <SectionTitle>Cleaner Map View</SectionTitle>
             <ProblemSolution
               problem="The map view is cluttered with overlapping pins and landmarks, causing high cognitive load that competed with vendors for attention."
-              solution="Simplify the map view, remove unnecessary elements to reduce cognitive load and improve discovery."
+              solution="I simplified the map by removing unnecessary landmarks and reducing visual noise, helping users focus on nearby restaurants and available offers."
             />
             <FullImage src="/case-study/pickup/map-noise-cover.webp" alt="Cleaner map view before and after" />
           </motion.div>
@@ -260,8 +270,8 @@ export const CaseStudyPickup = () => {
           <motion.div custom={6} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Vendor Location Display</SectionTitle>
             <ProblemSolution
-              problem={`Users struggle to find the "selected vendor" locations on the map, causing pickup and address issues.`}
-              solution={`Reduced "where exactly is it?" anxiety by adding vendor location imagery/location up clearly for users.`}
+              problem="Users struggled to locate the selected restaurant on the map, creating uncertainty about the exact pick-up location."
+              solution="I added clear location imagery and more prominent location details, helping users identify the restaurant and arrive with confidence."
             />
             <FullImage src="/case-study/pickup/vendor-location-cover.webp" alt="Vendor location display improvement" />
           </motion.div>
@@ -329,21 +339,23 @@ export const CaseStudyPickup = () => {
           <motion.div custom={8} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
             <SectionTitle>Usability Testing</SectionTitle>
             <ProblemSolution
-              problem="Evaluate the effectiveness and usability of the new designs against the current experience."
-              solution="Conducted unmoderated usability testing with 10 participants (from Singapore) to assess navigation ease, information clarity, and overall user satisfaction."
+              problemLabel="Testing Goal"
+              solutionLabel="Method"
+              problem="Validate whether the redesigned map improved navigation, information clarity and overall ease of use."
+              solution="I conducted an unmoderated usability test with 10 participants in Singapore and compared the new experience with the existing design."
             />
           </motion.div>
 
           {/* Prototype Test */}
           <motion.div custom={8} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>1 — Prototype Test, Map Navigation</SectionTitle>
+            <SectionTitle>1. Prototype Test: Map Navigation</SectionTitle>
             <div className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
               <span className="font-bold uppercase block mb-1">Test scenario:</span>
-              We asked participants to explore a restaurant (without a discount) from the pins and add it to the menu.
+              Participants were asked to select a restaurant without a discount from the map pins and add an item to their cart.
             </div>
             <Quote
               label="💡 Summary"
-              text="Overall, users found the map intuitive and informative, though some favoured Google Maps for more detailed navigation and reviews."
+              text="Most participants found the map clear and easy to use. Some preferred opening the restaurant in the Google Maps app for detailed directions and reviews."
             />
             {/* Prototype test phones with annotations — exact Figma export */}
             <FullImage src="/case-study/pickup/prototype-test-cover.webp" alt="Prototype test results" />
@@ -351,14 +363,14 @@ export const CaseStudyPickup = () => {
 
           {/* Preference Test */}
           <motion.div custom={9} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>2 — Preference Test</SectionTitle>
+            <SectionTitle>2. Preference Test</SectionTitle>
             <div className="font-['Inter_Tight',Helvetica] text-white text-base md:text-lg leading-relaxed max-w-[700px]">
               <span className="font-bold uppercase block mb-1">Test scenario:</span>
-              Which version of the map do you prefer? And follow up questions.
+              Participants compared the current and redesigned maps. They selected the version they preferred and explained why.
             </div>
             <Quote
               label="💡 Summary"
-              text="Users preferred the new map design for its clarity, simplicity, and modern look, finding it easier to use and more familiar."
+              text="Most participants preferred the redesigned map because it felt clearer, simpler and more familiar."
             />
             {/* Preference test phones with annotations — exact Figma export */}
             <FullImage src="/case-study/pickup/preference-test-cover.webp" alt="Preference test results" />
@@ -366,15 +378,15 @@ export const CaseStudyPickup = () => {
 
           {/* Success Metrics */}
           <motion.div custom={10} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col gap-5">
-            <SectionTitle>Success Metrics & Final Thoughts</SectionTitle>
+            <SectionTitle>Usability Test Results & Takeaways</SectionTitle>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { emoji: "🗺️", id: "info-clarity", stat: "90%", label: "found the map pins effectively displayed key info like discounts and ratings" },
-                { emoji: "🧭", id: "nav-ease", stat: "80%", label: "found it easy to navigate between Hotz. and Vert views and explore restaurants" },
-                { emoji: "✅", id: "preference", stat: "80%", label: "preferred the new map design over the control for its clarity and modern look" },
-                { emoji: "💬", id: "quote", stat: "\"The selected 3D house pin stood out clearly from others\"", label: "— usability test participant" },
-                { emoji: "🎨", id: "feel", stat: "Calmer & Familiar", label: "users described the new design as less noisy and reminiscent of Google Maps" },
-                { emoji: "🚀", id: "takeaway", stat: "Key Takeaway", label: "Iterating on the map pin design and layout significantly improved discoverability and user confidence" },
+                { emoji: "🗺️", id: "info-clarity", stat: "90%", label: "said the map pins clearly communicated discounts and ratings" },
+                { emoji: "🧭", id: "nav-ease", stat: "80%", label: "found it easy to switch between horizontal and vertical views and explore restaurants" },
+                { emoji: "✅", id: "preference", stat: "80%", label: "preferred the redesigned map for its clarity and modern appearance" },
+                { emoji: "💬", id: "quote", stat: "\"The selected 3D house pin stood out clearly from others\"", label: "Usability test participant" },
+                { emoji: "🎨", id: "feel", stat: "Calmer & Familiar", label: "Participants described the new design as less noisy and similar to Google Maps" },
+                { emoji: "🚀", id: "takeaway", stat: "Key Takeaway", label: "The redesigned pins and layout improved discoverability and user confidence during testing" },
               ].map(({ emoji, id, stat, label }) => (
                 <div key={id} className="bg-[#2B2D33] rounded-2xl p-5 flex flex-col gap-2">
                   <span className="text-2xl">{emoji}</span>
