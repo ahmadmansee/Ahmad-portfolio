@@ -24,7 +24,7 @@ export const AnalyticsConsent = () => {
       aria-label="Analytics information"
     >
       <p className="font-['Inter_Tight',Helvetica] text-sm leading-relaxed text-[#d5d5d7] sm:max-w-xl">
-        This site uses cookieless analytics. No ads.
+        This site uses privacy-friendly analytics.
       </p>
       <div className="flex shrink-0 items-center">
         <button
